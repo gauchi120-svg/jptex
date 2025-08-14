@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本皇家防霾紗窗 - 官方網站</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">日本皇家</div>
+        <button class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <nav class="main-nav" id="main-nav">
+        <ul>
+            <li><a href="#hero">首頁</a></li>
+            <li><a href="#cases">經典案例</a></li>
+            <li><a href="#quote-calculator">線上估價</a></li>
+            <li><a href="#news">最新消息</a></li>
+            <li><a href="#about">品牌理念</a></li>
+            <li><a href="#contact">聯絡我們</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>來自日本的極致工藝<br>守護您全家的呼吸健康</h1>
+                <p>Pollentec® 防霾紗窗，不只防蚊，更能有效阻擋PM2.5</p>
+                <a href="#quote-calculator" class="cta-button">取得免費線上估價</a>
+            </div>
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-microscope"></i>
+                    <h3>靜電吸附</h3>
+                    <p>有效抵擋PM2.5</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tint"></i>
+                    <h3>防潑水塗層</h3>
+                    <p>灰塵不易附著</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-leaf"></i>
+                    <h3>抵擋蚊蟲花粉</h3>
+                    <p>防止過敏原入侵</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cases" class="cases-section">
+            <h2>經典案例</h2>
+            <div class="slider-container">
+                <div class="slider-wrapper" id="slider-wrapper">
+                    </div>
+            </div>
+        </section>
+
+        <section id="quote-calculator" class="quote-section">
+            <h2>線上即時估價</h2>
+            <p class="subtitle">選擇產品並輸入窗戶尺寸，立即取得初步報價！</p>
+            <form id="quote-form">
+                <div class="form-group">
+                    <label for="product-type">選擇產品類型</label>
+                    <select id="product-type" name="product-type">
+                        <option value="pollentec">Pollentec® 防霾紗窗</option>
+                        <option value="tgp-film">TGP 液態玻璃隔熱膜</option>
+                        <option value="other">其他客製化需求</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="width">窗戶寬度 (公分)</label>
+                    <input type="number" id="width" name="width" placeholder="請輸入寬度" required>
+                </div>
+                <div class="form-group">
+                    <label for="height">窗戶高度 (公分)</label>
+                    <input type="number" id="height" name="height" placeholder="請輸入高度" required>
+                </div>
+                <button type="submit" class="cta-button">計算價格</button>
+            </form>
+            <div id="quote-result" class="quote-result"></div>
+        </section>
+
+        <section id="news" class="news-section">
+            <h2>最新消息</h2>
+            <div class="news-ticker-container">
+                <div class="news-ticker-viewport">
+                    <ul id="news-list" class="news-list-scrolling">
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>品牌理念</h2>
+            <p>我們相信，一個舒適的家源自於對細節的追求。面對日益嚴峻的環境挑戰，我們引進全球領先的 Pollentec® 技術，提供的不僅是產品，更是對健康生活的一份承諾與保障，讓您在家中也能自由深呼吸。</p>
+        </section>
+
+        <footer id="contact" class="main-footer-contact">
+            <h2>日本皇家防霾紗窗</h2>
+            <p>立即聯絡我們，預約專業諮詢與丈量服務。</p>
+            <p><i class="fas fa-phone"></i> (02) 2993-6882</p>
+            <p><i class="fas fa-envelope"></i> jproyaltex@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> 新北市新莊區思源路</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/jproyaltex" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="http://googleusercontent.com/youtube.com/2" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                日本皇家防霾紗窗 版權所有
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
