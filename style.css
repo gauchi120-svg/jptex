@@ -88,14 +88,30 @@ section {
     padding: 3rem 1.5rem;
 }
 
-h1, h2 {
-    text-align: center;
-    margin-bottom: 1rem;
+h1, h2, h3, h4 {
     color: var(--primary-color);
 }
 
 h2 {
     font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+h4 {
+    font-size: 1.2rem;
+    text-align: left;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
 }
 
 p.subtitle {
@@ -140,12 +156,16 @@ p.subtitle {
 .hero-section p {
     font-size: 1.1rem;
     margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .features {
     display: flex;
     justify-content: space-around;
     margin-top: 3rem;
+    text-align: center;
 }
 
 .feature-item {
@@ -162,70 +182,16 @@ p.subtitle {
 .feature-item h3 {
     font-size: 1rem;
     margin-bottom: 0.2rem;
+    border-bottom: none;
+    display: block;
 }
 .feature-item p {
     font-size: 0.8rem;
     color: #666;
 }
 
-/* 【新增樣式】名人推薦 */
-.testimonials-section {
-    background-color: var(--white);
-}
-.promo-promise {
-    max-width: 800px;
-    margin: 1rem auto 0 auto;
-    padding: 1rem;
-    text-align: center;
-    background-color: var(--secondary-color);
-    border-left: 5px solid var(--primary-color);
-    border-radius: 5px;
-}
-.promo-promise p {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--primary-color);
-}
-
-
-.cases-section {
-    background-color: var(--light-gray);
-}
-
-/* 【新增樣式】真實案例影片 */
-.videos-section {
-    background-color: var(--white);
-}
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.video-item {
-    background: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    overflow: hidden; /* 確保 iframe 圓角 */
-}
-.video-item h4 {
-    padding: 0.8rem 1rem;
-    background-color: var(--light-gray);
-    margin: 0;
-    font-size: 1rem;
-    text-align: center;
-}
-.video-item iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border: none;
-    display: block;
-}
-
-
 .quote-section {
-    background-color: var(--light-gray);
+    background-color: var(--white);
 }
 
 #quote-form .form-group {
@@ -257,76 +223,18 @@ p.subtitle {
     border-radius: 5px;
     text-align: center;
     font-size: 1.2rem;
-    color: var(--primary-color);
+    font-weight: 500;
+    color: var(--text-color);
     display: none;
-    line-height: 1.7;
 }
 
 .about-section {
-    text-align: left;
+    text-align: center;
 }
-
-.about-content-wrapper {
-    max-width: 900px;
+.about-section p {
+    max-width: 600px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-}
-
-.product-focus {
-    background-color: #fdfdfd;
-    padding: 1.5rem;
-    border-left: 4px solid var(--primary-color);
-    border-radius: 0 8px 8px 0;
-}
-
-.product-focus h3 {
-    color: var(--primary-color);
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
-
-.product-focus p {
-    line-height: 1.8;
-    color: #444;
-}
-
-.product-focus p strong {
-    color: #004a74;
-    font-weight: 700;
-}
-
-/* 【新增樣式】服務問答 FAQ */
-.faq-section {
-    background-color: var(--white);
-}
-.faq-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-.faq-item {
-    background-color: var(--light-gray);
-    padding: 1.5rem;
-    border-radius: 8px;
-}
-.faq-item h4 {
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 0.8rem;
-    font-size: 1.2rem;
-}
-.faq-item p {
-    margin: 0;
-    color: #555;
-    line-height: 1.7;
-}
-
-.news-section {
-    background-color: var(--secondary-color);
+    text-align: justify;
 }
 
 .main-footer-contact {
@@ -339,14 +247,17 @@ p.subtitle {
     color: var(--white);
 }
 
+.main-footer-contact a {
+    color: var(--white);
+    text-decoration: none;
+}
+
 .main-footer-contact p {
     margin-bottom: 1rem;
 }
 
 .main-footer-contact i {
-    margin-right: 0.8rem;
-    width: 20px; /* 確保圖示對齊 */
-    text-align: center;
+    margin-right: 0.5rem;
 }
 
 .social-links {
@@ -357,157 +268,80 @@ p.subtitle {
     color: var(--white);
     font-size: 1.5rem;
     margin: 0 1rem;
-    text-decoration: none;
-    transition: opacity 0.3s;
-}
-.social-links a:hover {
-    opacity: 0.8;
 }
 
 .copyright {
     font-size: 0.8rem;
     opacity: 0.7;
     margin-top: 2rem;
+    padding: 0 1rem;
 }
 
-/* ========= 經典案例 CSS (JS控制輪播更新版) ========= */
-.slider-container {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    overflow: hidden;
+/* ========= 圖文資訊區塊樣式 ========= */
+.content-section {
+    text-align: left;
+}
+.content-section h2 {
+    text-align:center;
+}
+.content-section.alternate-bg {
+    background-color: var(--light-gray);
+}
+
+.tech-block {
+    margin-bottom: 2rem;
+    background: var(--white);
+    padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.tech-block:last-child {
+    margin-bottom: 0;
 }
 
-.slider-wrapper {
-    display: flex;
-}
-
-.slide {
-    flex-shrink: 0;
-    width: 100%;
-    padding: 0 10px;
-}
-
-.slide a {
+.tech-block h3 {
+    text-align: left;
     display: block;
-    width: 100%;
-    height: 100%;
+    border-bottom: 1px solid var(--light-gray);
+}
+.tech-block h3 i {
+    margin-right: 0.5rem;
+}
+.tech-intro {
+    margin-bottom: 1rem;
+    color: #555;
 }
 
-.slide img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* ========= 最新消息 CSS (自動輪播) ========= */
-.news-ticker-container {
-    background-color: var(--white);
-    border: 1px solid #b3e0ff;
-    border-radius: 8px;
-    padding: 1rem 1.5rem;
-}
-
-.news-ticker-viewport {
-    height: 2.5em;
-    overflow: hidden;
-    position: relative;
-}
-
-.news-list-scrolling {
+.feature-list {
     list-style: none;
     padding-left: 0;
-    margin: 0;
-    position: absolute;
-    width: 100%;
-    animation: scroll-news 30s linear infinite;
 }
 
-.news-list-scrolling li {
-    height: 2.5em;
-    display: flex;
-    align-items: center;
+.feature-list li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    text-align: left;
 }
 
-.news-list-scrolling li a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-}
-
-.news-list-scrolling .news-icon {
-    font-size: 1.2rem;
-    margin-right: 1rem;
-}
-
-.news-list-scrolling .announcement-icon {
-    color: #d90429;
-}
-.news-list-scrolling .news-item-icon {
+.feature-list li::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f00c"; /* check icon */
     color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
 }
 
-.news-list-scrolling .news-content {
-    flex: 1;
+.video-links {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
-
-.news-list-scrolling .news-headline {
-    display: block;
-    font-weight: 500;
+.video-btn {
+    background-color: #c4302b; /* Youtube Red */
 }
-
-.news-list-scrolling .news-datetime {
-    display: none;
-}
-
-@keyframes scroll-news {
-    0% {
-        transform: translateY(0%);
-    }
-    100% {
-        transform: translateY(-50%);
-    }
-}
-
-/* ========= RWD 適應性調整 ========= */
-@media (min-width: 768px) {
-    .main-nav {
-        display: block;
-        position: static;
-        width: auto;
-        height: auto;
-        background: none;
-        padding-top: 0;
-    }
-    .main-nav ul {
-        display: flex;
-    }
-    .main-nav ul li a {
-        color: var(--primary-color);
-        padding: 0.5rem 1rem;
-    }
-    .main-nav ul li a:hover {
-        background: none;
-        color: #000;
-    }
-    .menu-toggle {
-        display: none;
-    }
-    .about-content-wrapper {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
-    .about-section {
-        text-align: center;
-    }
-    .product-focus {
-        text-align: left;
-    }
+.video-btn:hover {
+    background-color: #a32722;
 }
