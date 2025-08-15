@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 更新價格表，液態玻璃隔熱膜為 150 元/才
             const prices = {
-                'pollentec': 450, // 價格為範例
+                'pollentec': 450,
                 'tgp-film': 150, 
                 'both': 550, // 組合優惠價(範例)
             };
@@ -90,4 +90,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             quoteResult.innerHTML = resultHTML;
-            quoteResult.style.display =
+            quoteResult.style.display = 'block';
+        });
+    }
+
+    // ========= 新增功能：動態生成 Email 連結 (主旨附加日期時間) =========
+    const emailLink = document.getElementById('email-link');
+
+    if (emailLink) {
+        // 1. 格式化日期時間為 yyyymmddhhmm
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // 月份是 0-11，所以要+1
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const formattedDateTime = `${year}${month}${day}${hours}${minutes}`;
+
+        // 2. 設定 Email 資訊
+        const emailAddress = 'paiopaio@msn.com';
+        const baseSubject = '預約「日本皇家防霾紗窗/液態玻璃隔熱膜」到府安裝';
+        
+        // 3. 組合最終主旨
+        const finalSubject = `${baseSubject}${formattedDateTime}`;
+        
+        // 4. 建立並設定完整的 mailto 連結
+        emailLink.href = `mailto:${emailAddress}?subject=${encodeURIComponent(finalSubject)}`;
+    }
+});
