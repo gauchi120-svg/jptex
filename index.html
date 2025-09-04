@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant" class="scroll-smooth">
+<html lang="zh-Hant" class="scroll-smooth" style="scroll-padding-top: 80px;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,18 +16,41 @@
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="text-xl font-bold text-blue-600">家的隱形防護罩</div>
-            <div class="hidden md:flex space-x-8">
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="desktop-menu" class="hidden md:flex md:items-center space-x-8">
                 <a href="#problem" class="nav-link pb-1">你的痛點</a>
                 <a href="#comparison" class="nav-link pb-1">方案比較</a>
                 <a href="#solution" class="nav-link pb-1">最佳解答</a>
                 <a href="#performance" class="nav-link pb-1">數據實測</a>
                 <a href="#service" class="nav-link pb-1">首創服務</a>
                 <a href="#plans" class="nav-link pb-1">募資方案</a>
+                <a href="#plans" class="hidden lg:block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
+                    立即贊助
+                </a>
             </div>
-            <a href="#plans" class="hidden md:block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
-                立即贊助
-            </a>
         </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#problem" class="block py-2 px-6 text-sm nav-link-mobile">你的痛點</a>
+            <a href="#comparison" class="block py-2 px-6 text-sm nav-link-mobile">方案比較</a>
+            <a href="#solution" class="block py-2 px-6 text-sm nav-link-mobile">最佳解答</a>
+            <a href="#performance" class="block py-2 px-6 text-sm nav-link-mobile">數據實測</a>
+            <a href="#service" class="block py-2 px-6 text-sm nav-link-mobile">首創服務</a>
+            <a href="#plans" class="block py-2 px-6 text-sm nav-link-mobile">募資方案</a>
+            <div class="p-4">
+                 <a href="#plans" class="block w-full text-center bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
+                    立即贊助
+                </a>
+            </div>
+        </div>
     </header>
 
     <main>

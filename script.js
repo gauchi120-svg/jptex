@@ -1,20 +1,70 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-    // 處理方案比較頁籤切換
+    // --- 新增：漢堡選單功能 ---
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // 點擊手機選單中的連結後，自動關閉選單
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+
+    // --- 新增：滾動監聽，自動更新導覽列狀態 ---
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.4 // 當區塊進入畫面 40% 時觸發
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+
+                // 更新桌機版導覽列
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // 更新手機版導覽列
+                 mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // --- 原有功能：方案比較頁籤切換 ---
     const tabs = document.querySelectorAll('.tab');
     const tabContents = document.querySelectorAll('.tab-content');
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            // 移除所有頁籤的 active 狀態
             tabs.forEach(t => t.classList.remove('active'));
-            // 為被點擊的頁籤加上 active 狀態
             tab.classList.add('active');
 
-            // 隱藏所有內容
             tabContents.forEach(content => {
                 content.classList.remove('active');
-                // 如果內容的 id 和頁籤的 data-tab 相符，就顯示它
                 if (content.id === tab.dataset.tab) {
                     content.classList.add('active');
                 }
@@ -22,27 +72,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 處理數據圖表
+    // --- 原有功能：處理數據圖表 ---
     const performanceData = {
-        before: {
-            label: '鍍膜前',
-            ir: 75,
-            uv: 60,
-            light: 92
-        },
-        after: {
-            label: '鍍膜後',
-            ir: 12,
-            uv: 1,
-            light: 85
-        }
+        before: { label: '鍍膜前', ir: 75, uv: 60, light: 92 },
+        after: { label: '鍍膜後', ir: 12, uv: 1, light: 85 }
     };
     
     let donutChart, barChart;
-    
     const donutCtx = document.getElementById('performanceDonutChart').getContext('2d');
     const barCtx = document.getElementById('performanceBarChart').getContext('2d');
-    
     const donutChartTitle = document.getElementById('donut-chart-title');
     const barChartTitle = document.getElementById('bar-chart-title');
 
@@ -51,7 +89,6 @@ document.addEventListener('DOMContentLoaded', function () {
         donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析`;
         barChartTitle.textContent = `${data.label}：各項指標穿透率 (%)`;
 
-        // 如果圖表已存在，先銷毀
         if (donutChart) donutChart.destroy();
         donutChart = new Chart(donutCtx, {
             type: 'doughnut',
@@ -68,16 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.label}: ${context.raw}%`;
-                            }
-                        }
-                    }
+                    legend: { position: 'bottom' },
+                    tooltip: { callbacks: { label: context => `${context.label}: ${context.raw}%` } }
                 }
             }
         });
@@ -96,40 +125,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 }]
             },
             options: {
-                indexAxis: 'y', // 讓長條圖變橫向
+                indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        max: 100,
-                        ticks: {
-                            callback: function(value) {
-                                return value + '%';
-                            }
-                        }
-                    }
-                },
+                scales: { x: { beginAtZero: true, max: 100, ticks: { callback: value => value + '%' } } },
                 plugins: {
-                    legend: {
-                        display: false // 隱藏圖例
-                    },
-                     tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.label}: ${context.raw}%`;
-                            }
-                        }
-                    }
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: context => `${context.label}: ${context.raw}%` } }
                 }
             }
         });
     }
     
-    // 初始載入時，顯示 "鍍膜前" 的圖表
     createCharts('before');
     
-    // 綁定按鈕事件
     const btnBefore = document.getElementById('btnBefore');
     const btnAfter = document.getElementById('btnAfter');
     
