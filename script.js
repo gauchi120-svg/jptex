@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-    // 處理「方案比較」區塊的頁籤切換功能
+    // 處理方案比較頁籤切換
     const tabs = document.querySelectorAll('.tab');
     const tabContents = document.querySelectorAll('.tab-content');
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 定義圖表「鍍膜前」與「鍍膜後」的數據
+    // 處理數據圖表
     const performanceData = {
         before: {
             label: '鍍膜前',
@@ -38,24 +38,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
     
-    // 初始化圖表變數
     let donutChart, barChart;
     
-    // 取得 Canvas 元素
     const donutCtx = document.getElementById('performanceDonutChart').getContext('2d');
     const barCtx = document.getElementById('performanceBarChart').getContext('2d');
     
-    // 取得圖表標題元素
     const donutChartTitle = document.getElementById('donut-chart-title');
     const barChartTitle = document.getElementById('bar-chart-title');
 
-    // 建立或更新圖表的函式
     function createCharts(state) {
         const data = performanceData[state];
         donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析`;
         barChartTitle.textContent = `${data.label}：各項指標穿透率 (%)`;
 
-        // 如果圖表已存在，先銷毀舊的實例
+        // 如果圖表已存在，先銷毀
         if (donutChart) donutChart.destroy();
         donutChart = new Chart(donutCtx, {
             type: 'doughnut',
@@ -86,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         
-        // 如果圖表已存在，先銷毀舊的實例
         if (barChart) barChart.destroy();
         barChart = new Chart(barCtx, {
             type: 'bar',
@@ -110,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         max: 100,
                         ticks: {
                             callback: function(value) {
-                                return value + '%'; // 在 X 軸加上 %
+                                return value + '%';
                             }
                         }
                     }
@@ -131,25 +126,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
-    // 頁面載入時，先建立「鍍膜前」的圖表
+    // 初始載入時，顯示 "鍍膜前" 的圖表
     createCharts('before');
     
-    // 取得切換按鈕
+    // 綁定按鈕事件
     const btnBefore = document.getElementById('btnBefore');
     const btnAfter = document.getElementById('btnAfter');
     
-    // 監聽「鍍膜前」按鈕點擊事件
     btnBefore.addEventListener('click', () => {
         btnBefore.classList.add('active');
         btnAfter.classList.remove('active');
         createCharts('before');
     });
     
-    // 監聽「鍍膜後」按鈕點擊事件
     btnAfter.addEventListener('click', () => {
         btnAfter.classList.add('active');
         btnBefore.classList.remove('active');
         createCharts('after');
     });
-
 });

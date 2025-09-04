@@ -1,7 +1,7 @@
 body {
     font-family: 'Noto Sans TC', sans-serif;
-    background-color: #f8f9fa; /* 這是備用色，主要由 Tailwind 的 bg-gray-50 控制 */
-    color: #343a40; /* 這是備用色，主要由 Tailwind 的 text-gray-800 控制 */
+    background-color: #f8f9fa;
+    color: #343a40;
 }
 
 .chart-container {
