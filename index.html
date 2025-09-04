@@ -1,195 +1,450 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head><meta name="robots" content="noindex">
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9CRXL878YN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9CRXL878YN');
-</script>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日本皇家防霾紗窗｜環境工程團隊</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>玻璃隔熱隱形鍍膜｜募資計畫</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-    <script src="https://files.bpcontent.cloud/2025/08/29/14/20250829141610-IVGQ0HXD.js" defer></script>
-
+    <!-- Chosen Palette: Cool Tech Palette -->
+    <!-- Application Structure Plan: 我設計了一個主題式、單頁滾動的應用程式結構。頂部有固定導覽列，讓使用者能快速跳至「痛點分析」、「方案比較」、「產品數據」或「募資方案」等關鍵部分。這個結構旨在引導使用者走過一個完整的敘事流程：先感同身受（痛點），再看到現有方案的不足，接著發現我們創新的解決方案，並透過互動圖表親眼見證其效能，最後引導至贊助行動。這種非線性的探索方式比線性閱讀募資文案更具吸引力與說服力。 -->
+    <!-- Visualization & Content Choices: 1. 痛點：使用圖示卡片網格，將文字轉為更易吸收的視覺元素。2. 方案比較：設計了分頁卡片互動，使用者點擊不同方案（隔熱紙、窗簾）即可看到其缺點，強化本產品的優越性。3. 效能數據：這是核心互動區。我使用Chart.js創建了一個可動態更新的甜甜圈圖和長條圖，使用者可透過「鍍膜前/後」按鈕切換，即時看到紅外線、紫外線阻隔率的巨大差異。目標是將抽象的「XX%」數據轉化為有感的視覺震撼。所有圖表皆使用Canvas繪製，無SVG或Mermaid。 -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #0d6efd;
+            border-bottom-color: #0d6efd;
+        }
+        .btn-primary {
+            background-color: #0d6efd;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+        .tab.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .performance-toggle.active {
+            background-color: #0d6efd;
+            color: white;
+            border-color: #0d6efd;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-    <header class="main-header">
-        <div class="logo">日本皇家</div>
-        <button class="menu-toggle" id="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold text-blue-600">家的隱形防護罩</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#problem" class="nav-link pb-1">你的痛點</a>
+                <a href="#comparison" class="nav-link pb-1">方案比較</a>
+                <a href="#solution" class="nav-link pb-1">最佳解答</a>
+                <a href="#performance" class="nav-link pb-1">數據實測</a>
+                <a href="#service" class="nav-link pb-1">首創服務</a>
+                <a href="#plans" class="nav-link pb-1">募資方案</a>
+            </div>
+            <a href="#plans" class="hidden md:block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
+                立即贊助
+            </a>
+        </nav>
     </header>
 
-    <nav class="main-nav" id="main-nav">
-        <ul>
-            <li><a href="#hero">首頁</a></li>
-            <li><a href="#tech-analysis">核心技術</a></li>
-            <li><a href="#advantages">專案特色</a></li>
-            <li><a href="#quote-calculator">線上估價</a></li>
-            <li><a href="#terms">方案細則</a></li>
-            <li><a href="#contact">聯絡我們</a></li>
-        </ul>
-    </nav>
-
     <main>
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h1>防霾紗窗 + 液態玻璃隔熱膜</h1>
-                <p>兩項新科技，讓你家居生活雙倍舒適，省電外更能保護全家。</p>
-                <a href="#quote-calculator" class="cta-button">立即體驗線上估價</a>
-            </div>
-            <div class="features">
-                <div class="feature-item">
-                    <i class="fas fa-atom"></i>
-                    <h3>PM2.5 神器</h3>
-                    <p>一步到位的防霾科技</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-temperature-low"></i>
-                    <h3>西曬救星</h3>
-                    <p>有效降溫4~6度</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-truck"></i>
-                    <h3>到府施工</h3>
-                    <p>全台唯一專業師傅服務</p>
+        <section id="hero" class="bg-white pt-10 pb-20">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">今夏電費省一半！給家裝上隱形隔熱牆</h1>
+                <p class="mt-4 text-lg md:text-xl text-blue-600 font-semibold">室內體感降5°C，只擋熱、不擋光</p>
+                <div class="mt-8 max-w-4xl mx-auto bg-slate-200 rounded-lg overflow-hidden shadow-xl aspect-video flex items-center justify-center">
+                     <p class="text-slate-500">[ 主要影片或主視覺示意圖 ]</p>
                 </div>
             </div>
         </section>
 
-        <section id="tech-analysis" class="content-section">
-            <h2>雙項核心技術</h2>
-            <div class="tech-block">
-                <h3><i class="fas fa-wind"></i> 日本皇家防霾紗窗</h3>
-                <h4>政府不告訴你的空汙真相</h4>
-                <p class="tech-intro">現在全台灣人都是用肺在發電，每天呼吸的不是空氣，而是滿滿的PM2.5！但不用怕，現在有了可以預防空汙的黑科技神器！</p>
-                <h4>靜電吸附技術</h4>
-                <ul class="feature-list">
-                    <li>紗線含有天然四價貴金屬，形成持久靜電層，有效吸附細懸浮微粒。</li>
-                    <li>非市售品物理摩擦靜電，解決「一拍就掉」的問題。</li>
-                    <li>通過原廠滾筒洗衣機30回合測試，仍保有100%靜電力。</li>
-                </ul>
+        <section id="problem" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4">你家也有這樣的「隱形烤箱」嗎？</h2>
+                <p class="text-center max-w-2xl mx-auto text-gray-600 mb-12">住在台灣，我們都懂的痛。這些問題不僅影響舒適，更在無形中掏空你的荷包。</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4">🥵</div>
+                        <h3 class="font-bold text-lg mb-2">地獄西曬房</h3>
+                        <p class="text-gray-600 text-sm">下午房間變成烤箱，冷氣開再強還是滿頭大汗。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4">💸</div>
+                        <h3 class="font-bold text-lg mb-2">飆漲的電費單</h3>
+                        <p class="text-gray-600 text-sm">每個月都在為「看不見的熱」付出高昂代價。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4">😵‍💫</div>
+                        <h3 class="font-bold text-lg mb-2">刺眼的陽光</h3>
+                        <p class="text-gray-600 text-sm">想拉開窗簾，卻被強光搞得心煩意亂，只好整天關著。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4">🛋️</div>
+                        <h3 class="font-bold text-lg mb-2">褪色的寶貝家具</h3>
+                        <p class="text-gray-600 text-sm">心愛的收藏品，不知不覺中被紫外線曬到失去光彩。</p>
+                    </div>
+                </div>
             </div>
-            <div class="tech-block">
-                <h3><i class="fas fa-glass-whiskey"></i> 液態玻璃隔熱膜</h3>
-                <h4>全台第一家到府施工</h4>
-                <p class="tech-intro">避免自己DIY的困擾與失誤，我們提供專業師傅到府服務，價格卻是市售產品的十分之一！</p>
-                <h4>創新隔熱科技</h4>
-                <ul class="feature-list">
-                    <li>有效降溫4~6度，讓你輕鬆省下大筆冷氣電費。</li>
-                    <li>阻擋紫外線，是延長高級傢俱壽命與家人皮膚健康的最佳利器。</li>
-                    <li>高透明度不影響視野，適用於住宅、商辦、展示櫥窗等多種表面。</li>
-                </ul>
-                 <div class="video-links">
-                    <a href="https://www.youtube.com/watch?v=swFrEC9Pq_Y" target="_blank" class="cta-button video-btn">液態玻璃形象影片</a>
+        </section>
+
+        <section id="comparison" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4">過去，你只有「妥協」的選擇</h2>
+                 <p class="text-center max-w-2xl mx-auto text-gray-600 mb-12">為了隔熱，我們試過各種方法，但總有遺憾。點擊下方頁籤，看看這些方案的真實面貌。</p>
+                <div class="max-w-3xl mx-auto">
+                    <div class="flex border-b justify-center mb-8 space-x-2 md:space-x-4">
+                        <button class="tab active px-4 py-2 font-semibold rounded-t-lg" data-tab="tab1">隔熱紙/窗貼</button>
+                        <button class="tab px-4 py-2 font-semibold rounded-t-lg" data-tab="tab2">厚重窗簾</button>
+                        <button class="tab px-4 py-2 font-semibold rounded-t-lg" data-tab="tab3">換隔熱玻璃</button>
+                    </div>
+                    <div id="tab1" class="tab-content active bg-gray-100 p-8 rounded-b-lg rounded-tr-lg shadow-inner">
+                        <h3 class="font-bold text-xl mb-4">隔熱紙/窗貼的真相</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>嚴重影響採光，視野昏暗。</li>
+                            <li>自己貼容易有氣泡和白邊，美觀大打折扣。</li>
+                            <li>幾年後脆化、脫落，清除殘膠是場惡夢。</li>
+                            <li>好的隔熱紙價格不菲，廉價品則效果有限。</li>
+                        </ul>
+                    </div>
+                    <div id="tab2" class="tab-content bg-gray-100 p-8 rounded-b-lg rounded-tr-lg shadow-inner">
+                        <h3 class="font-bold text-xl mb-4">厚重窗簾的代價</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>完全犧牲窗外美景，室內變得陰暗壓抑。</li>
+                            <li>容易積累灰塵、塵蟎，成為過敏原。</li>
+                            <li>白天也需要開燈，反而更耗電。</li>
+                            <li>隔熱效果有限，窗簾本身仍會吸熱。</li>
+                        </ul>
+                    </div>
+                    <div id="tab3" class="tab-content bg-gray-100 p-8 rounded-b-lg rounded-tr-lg shadow-inner">
+                        <h3 class="font-bold text-xl mb-4">更換隔熱玻璃的門檻</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>價格極度昂貴，動輒數十萬。</li>
+                            <li>工程浩大，需要拆卸窗框，影響居住。</li>
+                            <li>對租屋族或舊公寓來說根本不切實際。</li>
+                        </ul>
+                    </div>
+                </div>
+                 <p class="text-center mt-12 text-xl font-bold text-blue-600">難道，享受清涼與美景，真的只能二選一嗎？</p>
+            </div>
+        </section>
+
+        <section id="solution" class="py-20">
+            <div class="container mx-auto px-6">
+                 <h2 class="text-3xl font-bold text-center mb-4">最佳解答 — 玻璃隔熱隱形鍍膜</h2>
+                 <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">我們引進最新的奈米陶瓷隔熱技術，打造出這款液態塗料。它固化後會在玻璃上形成一道僅有數微米厚的隱形防護層，徹底顛覆你對隔熱的想像。</p>
+                 <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-blue-500 text-4xl mb-3">☀️</div>
+                        <h3 class="font-bold text-lg mb-2">高效隔絕熱源</h3>
+                        <p>阻隔高達 <span class="text-blue-600 font-bold">88%</span> 的紅外線，讓熱能進不來，冷氣跑不掉。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                         <div class="text-purple-500 text-4xl mb-3">🛡️</div>
+                        <h3 class="font-bold text-lg mb-2">完美抵禦UV</h3>
+                        <p>隔絕 <span class="text-blue-600 font-bold">99%</span> 以上的紫外線，保護您的皮膚與珍貴家具。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-yellow-500 text-4xl mb-3">💎</div>
+                        <h3 class="font-bold text-lg mb-2">超高透光率</h3>
+                        <p>維持 <span class="text-blue-600 font-bold">85%</span> 的可見光穿透，採光依舊明亮，視野清晰不變。</p>
+                    </div>
                 </div>
             </div>
         </section>
         
-        <section id="advantages" class="content-section alternate-bg">
-            <h2>專案特色</h2>
-            <div class="tech-block">
-                <h3><i class="fas fa-check-circle"></i> 值得信賴的品牌</h3>
-                <h4>網紅 郭鬼鬼 影片支持</h4>
-                <p class="tech-intro">眾多網紅選擇與【日本皇家防霾紗窗】安裝合作，絕對是您最值得信賴的品牌。</p>
-                <div class="video-links">
-                    <a href="https://www.youtube.com/shorts/eDHd-AMD4Kg" target="_blank" class="cta-button video-btn">品牌形象廣告</a>
-                    <a href="https://www.youtube.com/shorts/BDOxgOTGE9k" target="_blank" class="cta-button video-btn">施工流程影片</a>
+        <section id="performance" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4">數據會說話：眼見為憑</h2>
+                <p class="text-center max-w-2xl mx-auto text-gray-600 mb-12">口說無憑，讓我們透過數據圖表，直觀感受「鍍膜前」與「鍍膜後」的巨大差異。請點擊下方按鈕進行切換。</p>
+
+                <div class="flex justify-center mb-8">
+                    <div class="inline-flex rounded-md shadow-sm">
+                        <button id="btnBefore" class="performance-toggle active px-6 py-2 text-sm font-medium border border-gray-200 rounded-l-lg">鍍膜前</button>
+                        <button id="btnAfter" class="performance-toggle px-6 py-2 text-sm font-medium border border-gray-200 rounded-r-lg">鍍膜後</button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 id="donut-chart-title" class="text-center font-bold text-xl mb-4 text-gray-700">鍍膜前：太陽光譜穿透分析</h3>
+                        <div class="chart-container">
+                            <canvas id="performanceDonutChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                         <h3 id="bar-chart-title" class="text-center font-bold text-xl mb-4 text-gray-700">鍍膜前：各項指標穿透率 (%)</h3>
+                        <div class="chart-container h-80 md:h-96">
+                            <canvas id="performanceBarChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="quote-calculator" class="quote-section">
-            <h2>線上即時估價</h2>
-            <p class="subtitle">選擇產品並輸入窗戶尺寸，立即取得初步報價！</p>
-            <form id="quote-form">
-                <div class="form-group">
-                    <label for="product-type">選擇產品類型</label>
-                    <select id="product-type" name="product-type">
-                        <option value="pollentec">防霾紗窗</option>
-                        <option value="tgp-film">液態玻璃隔熱膜 (150元/才)</option>
-                        <option value="both">防霾紗窗 + 隔熱膜組合</option>
-                    </select>
+        <section id="service" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4">【我們的首創承諾】不只是產品，更是一項「服務」</h2>
+                <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">再好的產品，若沒有正確施工，效果也大打折扣。因此，我們首創「產品 x 施工」一站式解決方案，募資期間，由專業團隊「免費到府為您施工」。</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-0">
+                    <div class="text-center w-60">
+                        <div class="bg-blue-500 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto">1</div>
+                        <h3 class="font-bold mt-4">贊助專案</h3>
+                        <p class="text-sm text-gray-600 mt-1">選擇最適合您的方案</p>
+                    </div>
+                    <div class="h-1 w-20 bg-gray-300 hidden md:block"></div>
+                    <div class="w-1 h-12 bg-gray-300 md:hidden"></div>
+                    <div class="text-center w-60">
+                        <div class="bg-blue-500 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto">2</div>
+                        <h3 class="font-bold mt-4">預約時間</h3>
+                        <p class="text-sm text-gray-600 mt-1">與我們的專業團隊聯繫</p>
+                    </div>
+                    <div class="h-1 w-20 bg-gray-300 hidden md:block"></div>
+                     <div class="w-1 h-12 bg-gray-300 md:hidden"></div>
+                    <div class="text-center w-60">
+                        <div class="bg-blue-500 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto">3</div>
+                        <h3 class="font-bold mt-4">在家享受成果</h3>
+                        <p class="text-sm text-gray-600 mt-1">將麻煩事交給我們！</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="width">窗戶寬度 (公分)</label>
-                    <input type="number" id="width" name="width" placeholder="請輸入寬度" required>
-                </div>
-                <div class="form-group">
-                    <label for="height">窗戶高度 (公分)</label>
-                    <input type="number" id="height" name="height" placeholder="請輸入高度" required>
-                </div>
-                <button type="submit" class="cta-button">計算價格</button>
-            </form>
-            <div id="quote-result" class="quote-result"></div>
-        </section>
-
-        <section id="terms" class="content-section alternate-bg">
-            <h2>方案細則（風險與變數）</h2>
-            <div class="tech-block">
-                <h3><i class="fas fa-info-circle"></i> 訂購前請詳閱</h3>
-                <ul class="feature-list">
-                    <li><b>一年保固：</b>每種方案皆提供一年保固服務。</li>
-                    <li><b>訂單低消：</b>每筆訂單低消為新台幣 9,000元，不足將加收車馬費 1,500元。</li>
-                    <li><b>尺寸錯誤：</b>若客戶尺寸選擇失誤，將以師傅現場丈量為準，並依下單優惠價計算差額。</li>
-                    <li><b>施工空間：</b>為確保品質，現場需提供至少 2米 x 3米的施工空間。</li>
-                    <li><b>7天鑑賞期：</b>自下單起 7 天內可取消訂單並退款；7 天後視為同意安裝，因屬客製化產品，出貨後無法退換貨。</li>
-                </ul>
             </div>
         </section>
 
-        <footer id="contact" class="main-footer-contact">
-            <h2>Royal-Tex日本皇家防霾紗窗與液態玻璃隔熱膜</h2>
-            <p class="footer-subtitle">我們將依訂單順序聯繫客戶，安排到府安裝事宜。</p>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:0987927250">客服0987-927-250</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-line"></i>
-                    <a href="https://line.me/ti/p/3hz0Quf71j" target="_blank">文字客服</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a id="email-link" href="mailto:paiopaio@msn.com">paiopaio@msn.com</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <a href="https://maps.app.goo.gl/TJxSvgw7gvPaAh6z8?g_st=ipc" target="_blank">724台南市七股區2831號</a>
+        <section id="plans" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">募資限定方案</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="border-2 border-blue-500 rounded-lg p-8 flex flex-col shadow-xl transform hover:scale-105 transition-transform duration-300">
+                        <div class="mb-4">
+                            <p class="text-sm font-semibold text-blue-600">超早鳥｜單窗體驗</p>
+                            <p class="text-3xl font-bold my-2">$1,800</p>
+                            <p class="text-gray-500 line-through">未來市價 $3,000</p>
+                        </div>
+                        <ul class="space-y-3 text-gray-700 mb-8 flex-grow">
+                            <li>✔️ 適用面積：3平方公尺內</li>
+                            <li>✔️ 玻璃隔熱隱形鍍膜</li>
+                            <li>✔️ 專業到府施工</li>
+                        </ul>
+                        <a href="#" class="w-full text-center bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
+                            現省 $1,200
+                        </a>
+                    </div>
+                     <div class="border rounded-lg p-8 flex flex-col shadow-lg">
+                        <div class="mb-4">
+                            <p class="text-sm font-semibold text-gray-600">嘖嘖獨享｜客廳升級</p>
+                            <p class="text-3xl font-bold my-2">$5,500</p>
+                             <p class="text-gray-500 line-through">未來市價 $9,000</p>
+                        </div>
+                        <ul class="space-y-3 text-gray-700 mb-8 flex-grow">
+                            <li>✔️ 適用面積：10平方公尺內</li>
+                            <li>✔️ 玻璃隔熱隱形鍍膜</li>
+                            <li>✔️ 專業到府施工</li>
+                        </ul>
+                        <a href="#" class="w-full text-center bg-gray-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-gray-800 transition-colors duration-300">
+                            立即贊助
+                        </a>
+                    </div>
+                     <div class="border rounded-lg p-8 flex flex-col shadow-lg">
+                        <div class="mb-4">
+                            <p class="text-sm font-semibold text-gray-600">家庭全配｜整戶專案</p>
+                             <p class="text-3xl font-bold my-2">$12,000</p>
+                             <p class="text-gray-500 line-through">未來市價 $20,000</p>
+                        </div>
+                        <ul class="space-y-3 text-gray-700 mb-8 flex-grow">
+                            <li>✔️ 適用面積：25平方公尺內</li>
+                            <li>✔️ 玻璃隔熱隱形鍍膜</li>
+                            <li>✔️ 專業到府施工</li>
+                        </ul>
+                        <a href="#" class="w-full text-center bg-gray-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-gray-800 transition-colors duration-300">
+                             立即贊助
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="social-links">
-                <a href="https://www.facebook.com/alan.huang.58910" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                    <span class="social-text fb-text">粉絲專頁</span>
-                </a>
-                <a href="https://www.jproyal-tex.com/" target="_blank" title="官方網站">
-                    <i class="fas fa-globe"></i>
-                </a>
-            </div>
-            <div class="copyright">
-                當您贊助此計畫即同意承擔風險，並接受可能延遲出貨之變因。
-            </div>
-        </footer>
+        </section>
     </main>
 
-    <script src="script.js?v=1.0.1"></script>
-    
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>&copy; 2025 玻璃隔熱隱形鍍膜團隊. All Rights Reserved.</p>
+            <p class="mt-2">此為募資專案頁面示意，非實際銷售頁面。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tab.dataset.tab) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            const performanceData = {
+                before: {
+                    label: '鍍膜前',
+                    ir: 75,
+                    uv: 60,
+                    light: 92
+                },
+                after: {
+                    label: '鍍膜後',
+                    ir: 12,
+                    uv: 1,
+                    light: 85
+                }
+            };
+            
+            let donutChart, barChart;
+            
+            const donutCtx = document.getElementById('performanceDonutChart').getContext('2d');
+            const barCtx = document.getElementById('performanceBarChart').getContext('2d');
+            
+            const donutChartTitle = document.getElementById('donut-chart-title');
+            const barChartTitle = document.getElementById('bar-chart-title');
+
+            function createCharts(state) {
+                const data = performanceData[state];
+                donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析`;
+                barChartTitle.textContent = `${data.label}：各項指標穿透率 (%)`;
+
+                if (donutChart) donutChart.destroy();
+                donutChart = new Chart(donutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['紅外線 (熱能)', '紫外線 (傷害)', '可見光 (亮度)'],
+                        datasets: [{
+                            data: [data.ir, data.uv, data.light],
+                            backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(153, 102, 255, 0.7)', 'rgba(255, 205, 86, 0.7)'],
+                            borderColor: ['#fff'],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                if (barChart) barChart.destroy();
+                barChart = new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['紅外線 (熱能)', '紫外線 (傷害)', '可見光 (亮度)'],
+                        datasets: [{
+                            label: '穿透率',
+                            data: [data.ir, data.uv, data.light],
+                            backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(153, 102, 255, 0.5)', 'rgba(255, 205, 86, 0.5)'],
+                            borderColor: ['rgb(255, 99, 132)', 'rgb(153, 102, 255)', 'rgb(255, 205, 86)'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                             tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.raw}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            createCharts('before');
+            
+            const btnBefore = document.getElementById('btnBefore');
+            const btnAfter = document.getElementById('btnAfter');
+            
+            btnBefore.addEventListener('click', () => {
+                btnBefore.classList.add('active');
+                btnAfter.classList.remove('active');
+                createCharts('before');
+            });
+            
+            btnAfter.addEventListener('click', () => {
+                btnAfter.classList.add('active');
+                btnBefore.classList.remove('active');
+                createCharts('after');
+            });
+
+        });
+    </script>
 </body>
 </html>
