@@ -24,12 +24,10 @@ body {
     transition: color 0.3s, border-bottom-color 0.3s;
     border-bottom: 2px solid transparent;
 }
-
 .nav-link:hover, .nav-link.active {
     color: #0d6efd;
     border-bottom-color: #0d6efd;
 }
-
 .nav-link-mobile.active {
     color: #0d6efd;
     font-weight: 700;
@@ -38,11 +36,11 @@ body {
 
 .btn-primary {
     background-color: #0d6efd;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
-
 .btn-primary:hover {
     background-color: #0b5ed7;
+    transform: scale(1.05);
 }
 
 .tab.active {
@@ -50,16 +48,28 @@ body {
     color: white;
 }
 
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 
 .performance-toggle.active {
     background-color: #0d6efd;
     color: white;
     border-color: #0d6efd;
+}
+
+/* 新增：熱門方案高亮 */
+.plan-popular {
+    position: relative;
+}
+.plan-popular::before {
+    content: "⭐ 最受歡迎";
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background-color: #0d6efd;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 6px;
 }

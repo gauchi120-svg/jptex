@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
-    // --- 新增：漢堡選單功能 ---
+    // --- 原有漢堡選單功能 ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
@@ -9,38 +8,27 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // 點擊手機選單中的連結後，自動關閉選單
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
         });
     });
 
-    // --- 新增：滾動監聽，自動更新導覽列狀態 ---
+    // --- 導覽列滾動監聽 ---
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
-    
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.4 // 當區塊進入畫面 40% 時觸發
-    };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
-
-                // 更新桌機版導覽列
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${id}`) {
                         link.classList.add('active');
                     }
                 });
-
-                // 更新手機版導覽列
-                 mobileNavLinks.forEach(link => {
+                mobileNavLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${id}`) {
                         link.classList.add('active');
@@ -48,21 +36,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.4 });
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+    sections.forEach(section => observer.observe(section));
 
-    // --- 原有功能：方案比較頁籤切換 ---
+    // --- Tabs 功能 ---
     const tabs = document.querySelectorAll('.tab');
     const tabContents = document.querySelectorAll('.tab-content');
-
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-
             tabContents.forEach(content => {
                 content.classList.remove('active');
                 if (content.id === tab.dataset.tab) {
@@ -72,12 +56,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // --- 原有功能：處理數據圖表 ---
+    // --- Chart.js 數據圖表 ---
     const performanceData = {
         before: { label: '鍍膜前', ir: 75, uv: 60, light: 92 },
         after: { label: '鍍膜後', ir: 12, uv: 1, light: 85 }
     };
-    
     let donutChart, barChart;
     const donutCtx = document.getElementById('performanceDonutChart').getContext('2d');
     const barCtx = document.getElementById('performanceBarChart').getContext('2d');
@@ -106,11 +89,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 maintainAspectRatio: false,
                 plugins: {
                     legend: { position: 'bottom' },
-                    tooltip: { callbacks: { label: context => `${context.label}: ${context.raw}%` } }
+                    tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw}%` } }
                 }
             }
         });
-        
+
         if (barChart) barChart.destroy();
         barChart = new Chart(barCtx, {
             type: 'bar',
@@ -128,29 +111,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: { x: { beginAtZero: true, max: 100, ticks: { callback: value => value + '%' } } },
+                scales: { x: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } } },
                 plugins: {
                     legend: { display: false },
-                    tooltip: { callbacks: { label: context => `${context.label}: ${context.raw}%` } }
+                    tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw}%` } }
                 }
             }
         });
     }
-    
     createCharts('before');
-    
-    const btnBefore = document.getElementById('btnBefore');
-    const btnAfter = document.getElementById('btnAfter');
-    
-    btnBefore.addEventListener('click', () => {
-        btnBefore.classList.add('active');
-        btnAfter.classList.remove('active');
+
+    document.getElementById('btnBefore').addEventListener('click', () => {
+        document.getElementById('btnBefore').classList.add('active');
+        document.getElementById('btnAfter').classList.remove('active');
         createCharts('before');
     });
-    
-    btnAfter.addEventListener('click', () => {
-        btnAfter.classList.add('active');
-        btnBefore.classList.remove('active');
+    document.getElementById('btnAfter').addEventListener('click', () => {
+        document.getElementById('btnAfter').classList.add('active');
+        document.getElementById('btnBefore').classList.remove('active');
         createCharts('after');
     });
+
+    // --- 額外：高亮顯示「最受歡迎」方案 ---
+    const popularPlan = document.querySelector('.plan-popular');
+    if (popularPlan) {
+        popularPlan.classList.add('ring-4', 'ring-blue-400');
+    }
 });
