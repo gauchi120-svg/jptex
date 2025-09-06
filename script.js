@@ -1,5 +1,5 @@
-```javascript
 document.addEventListener('DOMContentLoaded', function () {
+    
     // --- 漢堡選單功能 ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -9,28 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // 點擊手機選單中的連結後，自動關閉選單，並高亮目標區塊 (全新直接控制版)
+    // 點擊手機選單中的連結後，自動關閉選單
     mobileNavLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault(); 
+        link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
-
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                // 1. 先讓頁面滾動到目標位置
-                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-                // 2. 直接用JS強制設定高亮樣式，繞過CSS class衝突
-                targetSection.style.transition = 'background-color 1.5s ease-out';
-                targetSection.style.backgroundColor = '#fffbe5'; // 淡黃色
-
-                // 3. 1.5秒後，用JS移除背景色，恢復原樣
-                setTimeout(() => {
-                    targetSection.style.backgroundColor = ''; 
-                }, 1500);
-            }
         });
     });
 
@@ -99,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function createCharts(state) {
         const data = performanceData[state];
+        // -- 更新圖表標題 --
         donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析（基於內部測試）`;
         barChartTitle.textContent = `${data.label}：各項指標穿透率（%）（標準浮法玻璃）`;
 
@@ -167,4 +150,3 @@ document.addEventListener('DOMContentLoaded', function () {
         createCharts('after');
     });
 });
-```
