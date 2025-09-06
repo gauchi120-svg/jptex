@@ -1,5 +1,5 @@
+```javascript
 document.addEventListener('DOMContentLoaded', function () {
-    
     // --- 漢堡選單功能 ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function createCharts(state) {
         const data = performanceData[state];
-        donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析`;
-        barChartTitle.textContent = `${data.label}：各項指標穿透率 (%)`;
+        donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析（基於內部測試）`;
+        barChartTitle.textContent = `${data.label}：各項指標穿透率（%）（標準浮法玻璃）`;
 
         if (donutChart) donutChart.destroy();
         donutChart = new Chart(donutCtx, {
@@ -167,3 +167,4 @@ document.addEventListener('DOMContentLoaded', function () {
         createCharts('after');
     });
 });
+```
