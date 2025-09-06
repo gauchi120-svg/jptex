@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function createCharts(state) {
         const data = performanceData[state];
         // -- 更新圖表標題 --
-        donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析（基於內部測試）`;
-        barChartTitle.textContent = `${data.label}：各項指標穿透率（%）（標準浮法玻璃）`;
+        donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析`;
+        barChartTitle.textContent = `${data.label}：各項指標穿透率（%）`;
 
         if (donutChart) donutChart.destroy();
         donutChart = new Chart(donutCtx, {
