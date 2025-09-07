@@ -30,10 +30,11 @@ body {
     border-bottom-color: #0d6efd;
 }
 
+/* 【最終修正】使用 !important 確保樣式絕對生效 */
 .nav-link-mobile.active {
-    color: #0d6efd;
-    font-weight: 700;
-    background-color: #e7f1ff;
+    color: #0d6efd !important;
+    font-weight: 700 !important;
+    background-color: #e7f1ff !important;
 }
 
 .btn-primary {
@@ -166,7 +167,7 @@ body {
     background: #0d6efd; /* 使用網站主題藍色 */
 }
 
-/* --- 【最終修正】改用 CSS 動畫實現閃爍效果 --- */
+/* --- CSS 動畫實現閃爍效果 --- */
 @keyframes yellow-flash {
   from { background-color: #fffbe5; }
   to { background-color: transparent; }
