@@ -102,10 +102,11 @@ body {
     transform: translateY(20px);
     visibility: hidden;
 
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    left: 20px;
+    /* 【修改】最大化手機 LOGO 尺寸 */
+    width: 70px;
+    height: 70px;
+    bottom: 15px;
+    left: 15px;
     top: auto;
 }
 
@@ -126,10 +127,7 @@ body {
     visibility: visible;
 }
 
-/* 【修改】移除電腦版懸浮 LOGO 的樣式 */
-
-
-/* --- 提升電腦版基礎字體大小，增加閱讀性 --- */
+/* --- 提升電腦版基礎字體大小 --- */
 @media (min-width: 1024px) {
     html {
         font-size: 112.5%; /* 將基礎字體從 16px 提升至 18px */
