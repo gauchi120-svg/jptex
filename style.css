@@ -133,3 +133,36 @@ body {
         font-size: 112.5%; /* 將基礎字體從 16px 提升至 18px */
     }
 }
+
+/* --- 【新增】Swiper 輪播樣式微調 --- */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff; /* 按鈕顏色 */
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.25rem; /* 調整箭頭大小 */
+    font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.7);
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: #0d6efd; /* 使用網站主題藍色 */
+}
