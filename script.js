@@ -26,24 +26,20 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // 【最終修正】新增一個標記，來判斷是否為點擊觸發的滾動
     let isClickScrolling = false; 
 
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            isClickScrolling = true; // 點擊時，立刻設定標記為 true
+            isClickScrolling = true; 
 
-            // 1. 關閉選單
             mobileMenu.classList.add('hidden');
 
-            // 2. 立即手動設定當前點擊項目的 active 狀態
             mobileNavLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
             
-            // 3. 【最終修正】設定計時器，在平滑滾動結束後，將標記改回 false
             setTimeout(() => {
                 isClickScrolling = false;
-            }, 1000); // 1秒後恢復正常滾動監聽 (1000毫秒)
+            }, 1000); 
         });
     });
 
@@ -51,16 +47,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
     
+    // 【最終修正】調整滾動監聽的判斷標準
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.4 
+        rootMargin: '-80px 0px 0px 0px', // 從頂部內縮80px開始計算，避開導覽列
+        threshold: 0.2 // 將觸發門檻從 0.4 降至 0.2，反應更靈敏
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
-        // 【最終修正】在更新狀態前，先檢查是否為點擊觸發的滾動
         if (isClickScrolling) {
-            return; // 如果是點擊滾動，則暫停本次的監聽，避免衝突
+            return; 
         }
 
         entries.forEach(entry => {
