@@ -11,12 +11,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50 text-gray-800">
-    <a href="#" id="fixed-icon" title="回到最上方">
+    <a href="#" id="fixed-icon" title="回到最上方" class="md:hidden">
         <img src="images/logo.png" alt="Guard Pro Logo">
     </a>
+
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="text-xl font-bold text-blue-600">樂優生活 · GUARD PRO</div>
+            
+            <div class="flex items-center gap-3">
+                <a href="#" class="hidden md:block">
+                    <img src="images/logo.png" alt="Guard Pro Logo" class="h-12 w-auto"> </a>
+                <div class="text-xl font-bold text-blue-600">樂優生活 · GUARD PRO</div>
+            </div>
 
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
@@ -244,51 +250,3 @@
                             <li>✔️ 專業到府施工，約2小時完成</li>
                         </ul>
                         <a href="#" class="w-full text-center bg-gray-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-gray-800 transition-colors duration-300">立即預約</a>
-                    </div>
-
-                    <div class="border-2 bg-white rounded-lg p-8 flex flex-col shadow-xl plan-popular">
-                        <p class="text-sm font-semibold text-blue-600">嘖嘖獨享｜客廳升級</p>
-                        <p class="text-3xl font-bold my-2">$15,980</p>
-                        <p class="text-gray-500">參考市場行情約$33,000</p>
-                        <ul class="space-y-3 text-gray-700 my-6 flex-grow">
-                            <li>✔️ 適用面積：10㎡ 內</li>
-                            <li>✔️ GUARD PRO玻璃隔熱鍍膜</li>
-                            <li>✔️ 專業到府施工，約2小時完成</li>
-                        </ul>
-                        <a href="#" class="w-full text-center bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">🔥 立即搶購</a>
-                    </div>
-
-                    <div class="border bg-white rounded-lg p-8 flex flex-col shadow-lg hover:scale-105 transition-transform duration-300">
-                        <p class="text-sm font-semibold text-blue-600">家庭全配｜整戶專案</p>
-                        <p class="text-3xl font-bold my-2">$38,980</p>
-                        <p class="text-gray-500">參考市場行情約$82,500</p>
-                        <ul class="space-y-3 text-gray-700 my-6 flex-grow">
-                            <li>✔️ 適用面積：25㎡ 內</li>
-                            <li>✔️ GUARD PRO玻璃隔熱鍍膜</li>
-                            <li>✔️ 專業到府施工，約2小時完成</li>
-                        </ul>
-                        <a href="#" class="w-full text-center bg-gray-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-gray-800 transition-colors duration-300">立即預約</a>
-                    </div>
-                </div>
-                <p class="text-center mt-8 text-gray-600">數量有限，建議提早預約以確保優惠。</p>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto px-6 text-center text-sm">
-        <div class="flex justify-center space-x-6 mb-4">
-            <a href="brand-story.html" class="hover:text-blue-400 transition-colors">品牌故事</a>
-            <a href="crowdfunding-plan.html" class="hover:text-blue-400 transition-colors">募資計畫</a>
-            <a href="#plans" class="hover:text-blue-400 transition-colors">方案介紹</a>
-        </div>
-
-        <p>&copy; 2025 樂優生活科技團隊</p>
-        <p class="mt-2">聯繫方式：service@guardpro.com</p>
-        <p class="mt-2">此為募資專案，資金將用於產品研發與推廣，預計2025年正式上市。</p>
-    </div>
-</footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
