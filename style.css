@@ -67,13 +67,12 @@ body {
 /* --- 最受歡迎方案樣式 --- */
 .plan-popular {
     position: relative;
-    border-color: #0d6efd; /* 使用主題藍色作為邊框 */
-    transform: scale(1.03); /* 稍微放大，使其突出 */
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* 增加陰影 */
+    border-color: #0d6efd;
+    transform: scale(1.03);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     z-index: 10;
 }
 
-/* --- 為最受歡迎方案加上一個小標籤 --- */
 .plan-popular::before {
     content: '最多人選擇';
     position: absolute;
@@ -82,65 +81,70 @@ body {
     transform: translateX(-50%);
     background-color: #0d6efd;
     color: white;
-    font-size: 0.75rem; /* 12px */
+    font-size: 0.75rem;
     font-weight: bold;
     padding: 4px 12px;
     border-radius: 9999px;
     white-space: nowrap;
 }
 
+/* --- 【最終優化】智慧懸浮 LOGO 樣式 --- */
 
-/* --- 【二次優化】固定 LOGO 的響應式設計 --- */
-
-/* 1. 手機版樣式 (預設樣式，小於 768px) */
+/* 預設樣式 (手機版): 固定在左下角，預設隱藏 */
 #fixed-icon {
     position: fixed;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease; /* 讓所有變化都平順 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
     
-    /* [修改] 尺寸放大，位置改至左下角 */
-    width: 55px;
-    height: 55px;
-    bottom: 15px; /* 定位在底部 */
-    left: 15px;   /* 定位在左側 */
-    top: auto;      /* 清除頂部定位 */
+    /* 動態效果 */
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+
+    /* 手機版尺寸與位置 */
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    left: 20px;
+    top: auto;
 }
 
 #fixed-icon img {
     width: 100%;
     height: auto;
-    padding: 7px;
+    padding: 8px;
+    transition: transform 0.3s ease;
 }
 
-#fixed-icon:hover {
-    transform: scale(1.1);
+#fixed-icon:hover img {
+    transform: scale(1.08) rotate(-10deg); /* 滑鼠移上去時，圖片稍微放大並旋轉 */
 }
 
+/* 當 LOGO 可見時的樣式 (由 JS 添加 .visible) */
+#fixed-icon.visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
 
-/* 2. 平板與中等螢幕樣式 (大於 768px) */
+/* 電腦版樣式 (寬度大於 768px) */
 @media (min-width: 768px) {
     #fixed-icon {
-        /* [修改] 恢復至左上角，並設定中等尺寸 */
-        width: 70px;
-        height: 70px;
+        /* 尺寸放大 */
+        width: 85px;
+        height: 85px;
+        
+        /* 位置恢復至左上角 */
         top: 20px;
         left: 20px;
-        bottom: auto; /* 清除底部定位 */
+        bottom: auto;
     }
 
     #fixed-icon img {
-        padding: 8px;
-    }
-}
-
-/* 3. 大螢幕樣式 (大於 1024px) */
-@media (min-width: 1024px) {
-    #fixed-icon {
-        /* [修改] 在大螢幕上使用更大的尺寸 */
-        width: 80px;
-        height: 80px;
+        padding: 12px;
     }
 }
