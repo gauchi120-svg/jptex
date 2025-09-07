@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth" style="scroll-padding-top: 80px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>樂優生活 · GUARD PRO</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/images/apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <a href="#" id="fixed-icon" title="回到最上方" class="md:hidden">
+        <img src="images/logo.png" alt="Guard Pro Logo">
+    </a>
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
+            
+            <div class="flex items-center gap-4">
+                <a href="#" class="hidden md:block">
+                    <img src="images/logo.png" alt="Guard Pro Logo" class="h-16 w-auto">
+                </a>
+                <div class="text-xl font-bold text-blue-600">樂優生活 · GUARD PRO</div>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="desktop-menu" class="hidden md:flex md:items-center space-x-8">
+                <a href="#problem" class="nav-link pb-1">痛點剖析</a>
+                <a href="#comparison" class="nav-link pb-1">傳統方案</a>
+                <a href="#solution" class="nav-link pb-1">專屬解法</a>
+                <a href="#service" class="nav-link pb-1">服務流程</a>
+                <a href="#performance" class="nav-link pb-1">數據顯示</a>
+                <a href="#plans" class="nav-link pb-1">募資方案</a>
+                <a href="#plans" class="hidden lg:block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
+                    🔥 立即預約
+                </a>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#problem" class="block py-2 px-6 text-sm nav-link-mobile">痛點剖析</a>
+            <a href="#comparison" class="block py-2 px-6 text-sm nav-link-mobile">傳統方案</a>
+            <a href="#solution" class="block py-2 px-6 text-sm nav-link-mobile">專屬解法</a>
+            <a href="#service" class="block py-2 px-6 text-sm nav-link-mobile">服務流程</a>
+            <a href="#performance" class="block py-2 px-6 text-sm nav-link-mobile">數據顯示</a>
+            <a href="#plans" class="block py-2 px-6 text-sm nav-link-mobile">募資方案</a>
+            <div class="p-4">
+                <a href="#plans" class="block w-full text-center bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
+                    🔥 立即預約
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-white pt-10 pb-20">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+                    2小時完工｜降溫5°C の 隔熱鍍膜術🧙
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-blue-600 font-semibold">
+                    免DIY · 免拆窗 · 專業到府施工，感受清涼· 就趁現在！
+                </p>
+                <div class="mt-6">
+                    <a href="#plans" class="inline-block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300">
+                        🚀 立即預約，鎖定優惠
+                    </a>
+                </div>
+                
+                <div class="mt-8 max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl aspect-video relative swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="images/sun_screen_construction.jpg" alt="技師仔細在玻璃上塗抹GUARD PRO隔熱鍍膜" class="w-full h-full object-cover">
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-black bg-opacity-50 text-white text-center">
+                                <p class="font-semibold">專業技師到府施工</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/temperature_test.jpg" alt="鍍膜前後溫度差異實測，明顯降溫" class="w-full h-full object-cover">
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-black bg-opacity-50 text-white text-center">
+                                <p class="font-semibold">實驗證實，有效降溫 5°C 以上</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="problem" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4">你的家，也有這些困擾嗎？</h2>
+                <p class="text-center max-w-2xl mx-auto text-gray-600 mb-12">
+                    西曬、電費、刺眼強光、家具褪色...這些問題，其實不用再忍受！
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4">🥵</div>
+                        <h3 class="font-bold text-lg mb-2">西曬房像烤箱</h3>
+                        <p class="text-gray-600 text-sm">冷氣開整天，還是滿頭大汗。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4">💸</div>
+                        <h3 class="font-bold text-lg mb-2">電費暴漲</h3>
+                        <p class="text-gray-600 text-sm">為「看不見の熱」白白付上千元。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4">😵‍💫</div>
+                        <h3 class="font-bold text-lg mb-2">強光刺眼</h3>
+                        <p class="text-gray-600 text-sm">只能整天拉窗簾，家裡變得昏暗。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4">🛋️</div>
+                        <h3 class="font-bold text-lg mb-2">家具褪色</h3>
+                        <p class="text-gray-600 text-sm">紫外線讓心愛的裝潢家具失去光彩。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">傳統隔熱方案，看似便宜其實更花錢</h2>
+                <p class="text-center max-w-2xl mx-auto text-gray-600 mb-12">
+                    點擊下方頁籤，看看傳統方案的真實代價。
+                </p>
+                <div class="max-w-3xl mx-auto">
+                    <div class="flex border-b justify-center mb-8 space-x-2 md:space-x-4">
+                        <button class="tab active px-4 py-2 font-semibold rounded-t-lg" data-tab="tab1">隔熱紙/窗貼</button>
+                        <button class="tab px-4 py-2 font-semibold rounded-t-lg" data-tab="tab2">厚重窗簾</button>
+                        <button class="tab px-4 py-2 font-semibold rounded-t-lg" data-tab="tab3">換隔熱玻璃</button>
+                    </div>
+                    <div id="tab1" class="tab-content active bg-gray-100 p-8 rounded-b-lg rounded-tr-lg shadow-inner">
+                        <h3 class="font-bold text-xl mb-4">隔熱紙/窗貼の真相</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>嚴重影響採光，視野昏暗。</li>
+                            <li>自己貼容易有氣泡及白邊，美觀大打折扣。</li>
+                            <li>幾年後脆化、脫落，清除殘膠是場惡夢。</li>
+                            <li>好的隔熱紙價格不菲，廉價品則效果有限。</li>
+                        </ul>
+                    </div>
+                    <div id="tab2" class="tab-content bg-gray-100 p-8 rounded-b-lg rounded-tr-lg shadow-inner">
+                        <h3 class="font-bold text-xl mb-4">厚重窗簾の代價</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>完全犧牲窗外美景，室內變得陰暗壓抑。</li>
+                            <li>容易積累灰塵、塵蟎，成為過敏原。</li>
+                            <li>白天也需要開燈，反而更耗電。</li>
+                            <li>隔熱效果有限，窗簾本身仍會吸熱。</li>
+                        </ul>
+                    </div>
+                    <div id="tab3" class="tab-content bg-gray-100 p-8 rounded-b-lg rounded-tr-lg shadow-inner">
+                        <h3 class="font-bold text-xl mb-4">更換隔熱玻璃の門檻</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>價格極度昂貴，動輒數十萬元。</li>
+                            <li>工程浩大，需要拆卸窗框，影響居住。</li>
+                            <li>對租屋族或舊公寓來說根本不切實際。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">台灣首創！產品+施工一次搞定</h2>
+                <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">
+                    「GUARD PRO玻璃隔熱鍍膜」＋「專業到府施工」，快速施工約2小時，可明顯感受降溫效果。
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-blue-500 text-4xl mb-3">☀️</div>
+                        <h3 class="font-bold text-lg mb-2">阻隔約88%紅外線熱能</h3>
+                        <p>在西曬環境下，正常降溫4-6°C，節省冷氣電費。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-purple-500 text-4xl mb-3">🛡️</div>
+                        <h3 class="font-bold text-lg mb-2">阻隔99%紫外線</h3>
+                        <p>保護皮膚與家具，延長室內裝潢壽命。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-yellow-500 text-4xl mb-3">💎</div>
+                        <h3 class="font-bold text-lg mb-2">維持85%採光</h3>
+                        <p>白天依然明亮通透，享受窗外風景。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="service" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">3步驟，輕鬆享受清涼好宅</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-0 mt-12">
+                    <div class="text-center w-60">
+                        <div class="bg-blue-500 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto">1</div>
+                        <h3 class="font-bold mt-4">贊助專案</h3>
+                        <p class="text-sm text-gray-600 mt-1">30秒完成付款</p>
+                    </div>
+                    <div class="h-1 w-20 bg-gray-300 hidden md:block"></div>
+                    <div class="w-1 h-12 bg-gray-300 md:hidden"></div>
+                    <div class="text-center w-60">
+                        <div class="bg-blue-500 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto">2</div>
+                        <h3 class="font-bold mt-4">預約時間</h3>
+                        <p class="text-sm text-gray-600 mt-1">募資成功後，最快3天內安排</p>
+                    </div>
+                    <div class="h-1 w-20 bg-gray-300 hidden md:block"></div>
+                    <div class="w-1 h-12 bg-gray-300 md:hidden"></div>
+                    <div class="text-center w-60">
+                        <div class="bg-blue-500 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto">3</div>
+                        <h3 class="font-bold mt-4">在家享受成果</h3>
+                        <p class="text-sm text-gray-600 mt-1">施工約2小時，玻璃專業鍍膜技術</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">數據顯示：前後差異一目了然</h2>
+                <p class="text-center max-w-2xl mx-auto text-gray-600 mb-12">
+                    以下數據基於內部測試，使用浮法玻璃 (float glass)，實際效果因玻璃類型和環境條件而異。
+                </p>
+                <div class="flex justify-center mb-8">
+                    <div class="inline-flex rounded-md shadow-sm">
+                        <button id="btnBefore" class="performance-toggle active px-6 py-2 text-sm font-medium border border-gray-200 rounded-l-lg">鍍膜前</button>
+                        <button id="btnAfter" class="performance-toggle px-6 py-2 text-sm font-medium border border-gray-200 rounded-r-lg">鍍膜後</button>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 id="donut-chart-title" class="text-center font-bold text-xl mb-4 text-gray-700"></h3>
+                        <div class="chart-container">
+                            <canvas id="performanceDonutChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                         <h3 id="bar-chart-title" class="text-center font-bold text-xl mb-4 text-gray-700"></h3>
+                        <div class="chart-container h-80 md:h-96">
+                            <canvas id="performanceBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plans" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">募資限定優惠方案</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    
+                    <div class="border bg-white rounded-lg p-8 flex flex-col shadow-lg hover:scale-105 transition-transform duration-300">
+                        <p class="text-sm font-semibold text-blue-600">早鳥優惠｜單窗體驗</p>
+                        <p class="text-3xl font-bold my-2">$4,980</p>
+                        <p class="text-gray-500">參考市場行情約$9,900</p>
+                        <ul class="space-y-3 text-gray-700 my-6 flex-grow">
+                            <li>✔️ 適用面積：3㎡ 內</li>
+                            <li>✔️ GUARD PRO玻璃隔熱鍍膜</li>
+                            <li>✔️ 專業到府施工，約2小時完成</li>
+                        </ul>
+                        <a href="#" class="w-full text-center bg-gray-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-gray-800 transition-colors duration-300">立即預約</a>
+                    </div>
+
+                    <div class="border-2 bg-white rounded-lg p-8 flex flex-col shadow-xl plan-popular">
+                        <p class="text-sm font-semibold text-blue-600">嘖嘖獨享｜客廳升級</p>
+                        <p class="text-3xl font-bold my-2">$15,980</p>
+                        <p class="text-gray-500">參考市場行情約$33,000</p>
+                        <ul class="space-y-3 text-gray-700 my-6 flex-grow">
+                            <li>✔️ 適用面積：10㎡ 內</li>
+                            <li>✔️ GUARD PRO玻璃隔熱鍍膜</li>
+                            <li>✔️ 專業到府施工，約2小時完成</li>
+                        </ul>
+                        <a href="#" class="w-full text-center bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">🔥 立即搶購</a>
+                    </div>
+
+                    <div class="border bg-white rounded-lg p-8 flex flex-col shadow-lg hover:scale-105 transition-transform duration-300">
+                        <p class="text-sm font-semibold text-blue-600">家庭全配｜整戶專案</p>
+                        <p class="text-3xl font-bold my-2">$38,980</p>
+                        <p class="text-gray-500">參考市場行情約$82,500</p>
+                        <ul class="space-y-3 text-gray-700 my-6 flex-grow">
+                            <li>✔️ 適用面積：25㎡ 內</li>
+                            <li>✔️ GUARD PRO玻璃隔熱鍍膜</li>
+                            <li>✔️ 專業到府施工，約2小時完成</li>
+                        </ul>
+                        <a href="#" class="w-full text-center bg-gray-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm hover:bg-gray-800 transition-colors duration-300">立即預約</a>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-gray-600">數量有限，建議提早預約以確保優惠。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="brand-story.html" class="hover:text-blue-400 transition-colors">品牌故事</a>
+                <a href="crowdfunding-plan.html" class="hover:text-blue-400 transition-colors">募資計畫</a>
+                <a href="#plans" class="hover:text-blue-400 transition-colors">方案介紹</a>
+            </div>
+
+            <p>&copy; 2025 樂優生活科技團隊</p>
+            <p class="mt-2">聯繫方式：service@guardpro.com</p>
+            <p class="mt-2">此為募資專案，資金將用於產品研發與推廣，預計2025年正式上市。</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
