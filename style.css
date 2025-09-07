@@ -102,7 +102,6 @@ body {
     transform: translateY(20px);
     visibility: hidden;
 
-    /* 【修改】最大化手機 LOGO 尺寸 */
     width: 70px;
     height: 70px;
     bottom: 15px;
@@ -134,7 +133,7 @@ body {
     }
 }
 
-/* --- 【新增】Swiper 輪播樣式微調 --- */
+/* --- Swiper 輪播樣式微調 --- */
 .swiper-button-next,
 .swiper-button-prev {
     color: #ffffff; /* 按鈕顏色 */
