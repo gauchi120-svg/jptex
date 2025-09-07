@@ -22,12 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
     const desktopNavLinks = document.querySelectorAll('#desktop-menu .nav-link');
+    
+    // 【修正】選取手機選單中的「立即預約」按鈕
+    const mobileBookNowButton = document.getElementById('mobile-book-now-button');
 
     mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // 【最終修正】為手機版選單連結新增純粹的點擊事件
+    // 為手機版選單連結新增純粹的點擊事件
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
@@ -36,13 +39,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     
-    // 【最終修正】為電腦版選單連結也新增同樣的點擊事件
+    // 為電腦版選單連結也新增同樣的點擊事件
     desktopNavLinks.forEach(link => {
         link.addEventListener('click', () => {
             desktopNavLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
         });
     });
+
+    // 【修正】為手機選單的「立即預約」按鈕新增點擊後收合選單的功能
+    if (mobileBookNowButton) {
+        mobileBookNowButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    }
 
     /* --- 所有滾動監聽 (IntersectionObserver) 功能已完全移除 --- */
 
