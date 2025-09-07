@@ -97,11 +97,11 @@ body {
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
-    /* [修改] 電腦版放大圖示，更具識別度 */
-    width: 65px;
-    height: 65px;
-    top: 15px;
-    left: 15px;
+    /* [二次修改] 電腦版再次放大圖示，並調整邊距 */
+    width: 75px;
+    height: 75px;
+    top: 10px;
+    left: 20px;
 }
 
 #fixed-icon:hover {
@@ -111,19 +111,21 @@ body {
 #fixed-icon img {
     width: 100%;       /* 讓圖片填滿整個圓圈 */
     height: auto;
-    padding: 8px;      /* 讓圖片跟圓圈邊緣有點距離，不會擠在一起 */
+    padding: 10px;      /* 讓圖片跟圓圈邊緣有點距離，不會擠在一起 */
 }
 
-/* --- [新增] LOGO 的手機版響應式設計 --- */
+/* --- [二次修改] LOGO 的手機版響應式設計 --- */
 @media (max-width: 767px) {
     #fixed-icon {
-        width: 48px;   /* 在手機螢幕上，將寬度縮小為 48px */
-        height: 48px;  /* 在手機螢幕上，將高度縮小為 48px */
-        top: 12px;     /* 微調與頂部的距離 */
-        left: 12px;    /* 微調與左側的距離 */
+        /* 手機版放大圖示 */
+        width: 55px;
+        height: 55px;
+        /* 將圖示從頂部下移 80px，使其顯示在導覽列下方 */
+        top: 80px;
+        left: 15px;
     }
 
     #fixed-icon img {
-        padding: 6px; /* 在手機上，讓圖片內距小一點，看起來更大 */
+        padding: 7px; /* 在手機上，微調圖片內距 */
     }
 }
