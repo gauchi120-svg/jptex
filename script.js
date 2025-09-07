@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-    // --- 【新增】初始化 Hero 輪播 ---
+    // --- 【修改後】初始化 Hero 輪播 ---
     const swiper = new Swiper('.swiper', {
-        loop: true, // 循環播放
+        loop: true, 
         autoplay: {
-            delay: 5000, // 5秒切換一次
-            disableOnInteraction: false, // 用戶操作後不停止自動播放
+            delay: 5000, 
+            disableOnInteraction: false, 
         },
-        effect: 'fade', // 使用淡入淡出效果
-        fadeEffect: {
-            crossFade: true
-        },
+        /* * 【關鍵修改】
+         * 移除了 effect: 'fade' 相關設定，
+         * 恢復預設的 'slide' 滑動效果，確保手機版可以正常滑動。
+         */
+
         // 分頁圓點
         pagination: {
             el: '.swiper-pagination',
@@ -28,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 監聽頁面滾動事件
     window.addEventListener('scroll', function() {
-        // 如果頁面向下滾動超過 200px，就添加 .visible class，否則移除
         if (window.scrollY > 200) {
             fixedIcon.classList.add('visible');
         } else {
@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // 點擊手機選單中的連結後，自動關閉選單
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
@@ -117,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function createCharts(state) {
         const data = performanceData[state];
-        // -- 更新圖表標題 --
         donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析`;
         barChartTitle.textContent = `${data.label}：各項指標穿透率（%）`;
 
