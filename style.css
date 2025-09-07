@@ -88,20 +88,20 @@ body {
     border-radius: 9999px;
     white-space: nowrap;
 }
-/* --- 固定在左上角的圖示樣式 --- */
+
+/* --- 固定在左上角的圖示樣式 (已優化電腦版) --- */
 #fixed-icon {
-    position: fixed; /* 關鍵！讓圖示釘在螢幕上，而不是跟著網頁內容滾動 */
-    top: 20px;       /* 離螢幕頂部 20px */
-    left: 20px;      /* 離螢幕左側 20px */
-    width: 50px;       /* 圖示的寬度 */
-    height: 50px;      /* 圖示的高度 */
-    z-index: 1000;   /* 確保圖示顯示在所有內容的最上層，數字要夠大 */
-    
-    /* 以下是加分項，讓外觀更好看 */
-    background-color: rgba(255, 255, 255, 0.8); /* 加個半透明底色，避免跟背景黏在一起 */
-    border-radius: 50%; /* 變成圓形 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 加個立體感的陰影 */
-    transition: transform 0.3s ease; /* 滑鼠移上去時，有平順的動畫效果 */
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    /* [修改] 電腦版放大圖示，更具識別度 */
+    width: 65px;
+    height: 65px;
+    top: 15px;
+    left: 15px;
 }
 
 #fixed-icon:hover {
@@ -112,4 +112,18 @@ body {
     width: 100%;       /* 讓圖片填滿整個圓圈 */
     height: auto;
     padding: 8px;      /* 讓圖片跟圓圈邊緣有點距離，不會擠在一起 */
+}
+
+/* --- [新增] LOGO 的手機版響應式設計 --- */
+@media (max-width: 767px) {
+    #fixed-icon {
+        width: 48px;   /* 在手機螢幕上，將寬度縮小為 48px */
+        height: 48px;  /* 在手機螢幕上，將高度縮小為 48px */
+        top: 12px;     /* 微調與頂部的距離 */
+        left: 12px;    /* 微調與左側的距離 */
+    }
+
+    #fixed-icon img {
+        padding: 6px; /* 在手機上，讓圖片內距小一點，看起來更大 */
+    }
 }
