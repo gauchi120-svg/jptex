@@ -4,47 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>募資計畫 - 樂優生活 · GUARD PRO</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .prose h2 {
+            font-size: 1.875rem; /* 30px */
+            margin-bottom: 1.5rem; /* 24px */
+            padding-bottom: 0.5rem; /* 8px */
+            border-bottom: 2px solid #e5e7eb; /* gray-200 */
+        }
+        .prose ol, .prose ul {
+            padding-left: 1.5em;
+        }
+        .prose li {
+            margin-bottom: 0.75em;
+        }
+        .prose strong {
+            color: #1d4ed8; /* blue-700 */
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <header class="bg-white shadow-md sticky top-0 z-50">
-         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold text-blue-600">樂優生活 · GUARD PRO</a>
-            <div class="hidden md:flex md:items-center space-x-8">
-                <a href="index.html#problem" class="nav-link pb-1">痛點剖析</a>
-                <a href="index.html#plans" class="nav-link pb-1">募資方案</a>
-                <a href="index.html#plans" class="hidden lg:block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700">
-                    🔥 前往支持
-                </a>
-            </div>
+        <nav class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-4">
+                <img src="images/logo.png" alt="Guard Pro Logo" class="h-12 md:h-16 w-auto">
+                <div class="text-xl font-bold text-blue-600">樂優生活 · GUARD PRO</div>
+            </a>
+            <a href="https://www.zeczec.com/projects/guard-pro" target="_blank" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
+                🔥 前往支持
+            </a>
         </nav>
     </header>
 
     <main class="container mx-auto px-6 py-12 md:py-20">
-        <article class="prose lg:prose-xl max-w-4xl mx-auto">
-            <h1 class="text-3xl md:text-5xl font-bold text-center mb-8">我們的募資計畫與承諾</h1>
-            <p>（在這裡填寫您的募資計畫詳情...）</p>
-            <h2>資金用途</h2>
-            <p>本次募資所得的資金，將100%用於產品的優化與量產。我們計畫將資金分配於以下幾個部分：...</p>
+        <article class="prose lg:prose-xl max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl">
+            <h1 class="text-3xl md:text-5xl font-bold text-center mb-4">家的涼爽大作戰</h1>
+            <p class="text-center text-lg text-gray-600 mb-10">為您家玻璃穿上一層防曬隱形外衣，讓陽光只留溫暖不留熱。</p>
+
+            <img src="IMG_6477.jpg" alt="溫馨家庭在客廳享受舒適陽光" class="rounded-lg shadow-md mb-12">
+
+            <h2>專案內容：一場告別高溫的居住革命</h2>
+            <p>樂優生活團隊計畫於嘖嘖平台發起「GUARD PRO 玻璃隔熱隱形鍍膜」之全台首發預購專案。</p>
+            <p>我們精準鎖定台灣居家市場的長期痛點：每年因「<strong>玻璃西曬</strong>」所導致的室內高溫與驚人電費。現行傳統方案中，「傳統隔熱紙」有用料壽命短、易起泡影響美觀的問題；而「DIY隔熱塗料」則因專業施工門檻極高，消費者自行操作效果不彰。</p>
+            <p>為此，我們推出台灣首創的「<strong>產品＋專業到府施工</strong>」全包式解決方案。我們的核心產品採用頂尖奈米級塗料，經實測可有效降低室內均溫<strong>4-6°C</strong>，並節省高達<strong>30%</strong>的冷氣電費。為確保產品100%發揮效能，我們堅持由團隊統一SOP培訓的專業師傅到府服務，可實現平均<strong>2小時快速完工</strong>，完美解決市場缺口。</p>
+            
+            <hr class="my-12">
+
+            <h2>資金用途：您的支持，將成就更涼爽的未來</h2>
+            <p>此次募資為「預購式專案」，旨在完成市場驗證並籌備規模化服務的基礎。所募得資金將審慎運用於：</p>
             <ul>
-                <li><strong>材料採購與優化 (50%)：</strong>...</li>
-                <li><strong>市場推廣與教育 (30%)：</strong>...</li>
-                <li><strong>團隊營運與客服建置 (20%)：</strong>...</li>
+                <li><strong>首批原料量產採購 (50%)：</strong>以量制價，將成本所節省之金額直接回饋給首批支持者，讓您以最優惠的價格，享受最頂尖的技術。</li>
+                <li><strong>全台專業施工團隊建置 (30%)：</strong>包含師傅的招募、SOP標準化培訓與認證，確保從北到南的服務品質一致性，讓專業成為我們的標準配備。</li>
+                <li><strong>客戶服務與保固系統開發 (20%)：</strong>建立完善的線上預約與售後保固系統，從預約到完工，提供您最流暢安心的服務體驗。</li>
             </ul>
-            <h2>時程規劃</h2>
-            <p>我們預計的時程如下：...</p>
+            
+             <hr class="my-12">
+
+            <h2>我們的承諾</h2>
+            <p>我們鄭重承諾，本專案為尚未上市的一次性預購專案，將於募資結束後<strong>1至3個月內</strong>，依贊助順序，完成施工服務，以符合平台規範。我們有信心，此一創新的商業模式與清晰的市場定位，將能為嘖嘖平台帶來一檔成功的指標性專案。</p>
+
+            <hr class="my-12">
+
+            <h2>風險與挑戰</h2>
+            <p>專案可能遇到各種不可控因素（如原料進口延遲、物流等），若遇突發狀況，我們承諾將第一時間在專案更新頁面與粉絲專頁，主動、透明地向所有贊助者報告最新狀況與預計的應對方案。當您贊助此計畫即同意承擔此風險，並接受可能延遲出貨之變因，您的信任是我們前進的最大動力。</p>
+
+             <div class="text-center mt-16">
+                <a href="https://www.zeczec.com/projects/guard-pro" target="_blank" class="bg-blue-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300 text-xl">
+                    🚀 立即支持，加入家的涼爽大作戰！
+                </a>
+            </div>
         </article>
     </main>
 
-     <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-gray-800 text-white py-8 mt-12 md:mt-20">
         <div class="container mx-auto px-6 text-center text-sm">
             <div class="flex justify-center space-x-6 mb-4">
-                <a href="brand-story.html" class="hover:text-blue-400">品牌故事</a>
-                <a href="crowdfunding-plan.html" class="hover:text-blue-400">募資計畫</a>
-                <a href="index.html#plans" class="hover:text-blue-400">方案介紹</a>
+                <a href="index.html" class="hover:text-blue-400 transition-colors">專案首頁</a>
+                <a href="brand-story.html" class="hover:text-blue-400 transition-colors">品牌故事</a>
+                <a href="FAQ.html" class="hover:text-blue-400 transition-colors">常見問題</a>
             </div>
             <p>&copy; 2025 樂優生活科技團隊</p>
             <p class="mt-2">聯繫方式：service@guardpro.com</p>
