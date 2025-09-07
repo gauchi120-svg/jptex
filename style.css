@@ -88,7 +88,7 @@ body {
     white-space: nowrap;
 }
 
-/* --- 手機版懸浮 LOGO 樣式 --- */
+/* --- 手機版懸浮 LOGO 樣式 (修改後) --- */
 #fixed-icon {
     position: fixed;
     z-index: 1000;
@@ -98,9 +98,10 @@ body {
     cursor: pointer;
     
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-    opacity: 0;
-    transform: translateY(20px);
-    visibility: hidden;
+    /* 【修改】預設狀態改為可見 */
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
 
     width: 70px;
     height: 70px;
@@ -120,6 +121,7 @@ body {
     transform: scale(1.08) rotate(-10deg);
 }
 
+/* 這個 class 現在已不再被 JS 使用，但保留也無妨 */
 #fixed-icon.visible {
     opacity: 1;
     transform: translateY(0);
