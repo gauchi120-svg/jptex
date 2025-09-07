@@ -1,181 +1,174 @@
-document.addEventListener('DOMContentLoaded', function () {
-    
-    // --- 初始化 Hero 輪播 ---
-    const swiper = new Swiper('.swiper', {
-        loop: true, 
-        autoplay: {
-            delay: 3000, 
-            disableOnInteraction: false, 
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
 
-    /* --- 智慧懸浮 LOGO 功能的程式碼已移除，改由 CSS 控制 --- */
-    
-    // --- 漢堡選單功能 ---
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    max-height: 400px;
+}
 
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    // 整合手機版選單連結的點擊功能
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            mobileNavLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                targetSection.classList.add('flash-bg');
-                setTimeout(() => {
-                    targetSection.classList.remove('flash-bg');
-                }, 1500);
-            }
-        });
-    });
-
-    // --- 滾動監聽，自動更新導覽列狀態 ---
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    // 【修改#2】調整滾動監聽的設定，以修正固定導覽列造成的偏移
-    const observerOptions = {
-        root: null,
-        rootMargin: '-80px 0px 0px 0px', // 從頂部扣除 80px 的導覽列高度
-        threshold: 0.1 // 降低觸發門檻，讓反應更靈敏
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
-                });
-                mobileNavLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // --- 方案比較頁籤切換 ---
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === tab.dataset.tab) {
-                    content.classList.add('active');
-                }
-            });
-        });
-    });
-
-    // --- 處理數據圖表 ---
-    const performanceData = {
-        before: { label: '鍍膜前', ir: 75, uv: 60, light: 92 },
-        after: { label: '鍍膜後', ir: 12, uv: 1, light: 85 }
-    };
-    
-    let donutChart, barChart;
-    const donutCtx = document.getElementById('performanceDonutChart').getContext('2d');
-    const barCtx = document.getElementById('performanceBarChart').getContext('2d');
-    const donutChartTitle = document.getElementById('donut-chart-title');
-    const barChartTitle = document.getElementById('bar-chart-title');
-
-    function createCharts(state) {
-        const data = performanceData[state];
-        donutChartTitle.textContent = `${data.label}：太陽光譜穿透分析`;
-        barChartTitle.textContent = `${data.label}：各項指標穿透率（%）`;
-
-        if (donutChart) donutChart.destroy();
-        donutChart = new Chart(donutCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['紅外線 (熱能)', '紫外線 (傷害)', '可見光 (亮度)'],
-                datasets: [{
-                    data: [data.ir, data.uv, data.light],
-                    backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(153, 102, 255, 0.7)', 'rgba(255, 205, 86, 0.7)'],
-                    borderColor: ['#fff'],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'bottom' },
-                    tooltip: { callbacks: { label: context => `${context.label}: ${context.raw}%` } }
-                }
-            }
-        });
-        
-        if (barChart) barChart.destroy();
-        barChart = new Chart(barCtx, {
-            type: 'bar',
-            data: {
-                labels: ['紅外線 (熱能)', '紫外線 (傷害)', '可見光 (亮度)'],
-                datasets: [{
-                    label: '穿透率',
-                    data: [data.ir, data.uv, data.light],
-                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(153, 102, 255, 0.5)', 'rgba(255, 205, 86, 0.5)'],
-                    borderColor: ['rgb(255, 99, 132)', 'rgb(153, 102, 255)', 'rgb(255, 205, 86)'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: { x: { beginAtZero: true, max: 100, ticks: { callback: value => value + '%' } } },
-                plugins: {
-                    legend: { display: false },
-                    tooltip: { callbacks: { label: context => `${context.label}: ${context.raw}%` } }
-                }
-            }
-        });
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
     }
+}
+
+.nav-link {
+    transition: color 0.3s, border-bottom-color 0.3s;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #0d6efd;
+    border-bottom-color: #0d6efd;
+}
+
+.nav-link-mobile.active {
+    color: #0d6efd;
+    font-weight: 700;
+    background-color: #e7f1ff;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.tab.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.performance-toggle.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+/* --- 最受歡迎方案樣式 --- */
+.plan-popular {
+    position: relative;
+    border-color: #0d6efd;
+    transform: scale(1.03);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    z-index: 10;
+}
+
+.plan-popular::before {
+    content: '最多人選擇';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0d6efd;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    white-space: nowrap;
+}
+
+/* --- 手機版懸浮 LOGO 樣式 --- */
+#fixed-icon {
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
     
-    createCharts('before');
-    
-    const btnBefore = document.getElementById('btnBefore');
-    const btnAfter = document.getElementById('btnAfter');
-    
-    btnBefore.addEventListener('click', () => {
-        btnBefore.classList.add('active');
-        btnAfter.classList.remove('active');
-        createCharts('before');
-    });
-    
-    btnAfter.addEventListener('click', () => {
-        btnAfter.classList.add('active');
-        btnBefore.classList.remove('active');
-        createCharts('after');
-    });
-});
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    /* 【修正#1】預設狀態改為永遠可見 */
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+
+    width: 70px;
+    height: 70px;
+    bottom: 15px;
+    left: 15px;
+    top: auto;
+}
+
+#fixed-icon img {
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    transition: transform 0.3s ease;
+}
+
+#fixed-icon:hover img {
+    transform: scale(1.08) rotate(-10deg);
+}
+
+#fixed-icon.visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* --- 提升電腦版基礎字體大小 --- */
+@media (min-width: 1024px) {
+    html {
+        font-size: 112.5%; /* 將基礎字體從 16px 提升至 18px */
+    }
+}
+
+/* --- Swiper 輪播樣式微調 --- */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff; /* 按鈕顏色 */
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.25rem; /* 調整箭頭大小 */
+    font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.7);
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: #0d6efd; /* 使用網站主題藍色 */
+}
+
+/* --- 【修正#2】手機版導覽點擊後的閃爍效果 --- */
+.flash-bg {
+    background-color: #fffbe5; /* 淡黃色 */
+    transition: background-color 1s ease-out;
+}
