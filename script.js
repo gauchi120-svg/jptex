@@ -1,6 +1,29 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-    // --- 【新增】智慧懸浮 LOGO 功能 ---
+    // --- 【新增】初始化 Hero 輪播 ---
+    const swiper = new Swiper('.swiper', {
+        loop: true, // 循環播放
+        autoplay: {
+            delay: 5000, // 5秒切換一次
+            disableOnInteraction: false, // 用戶操作後不停止自動播放
+        },
+        effect: 'fade', // 使用淡入淡出效果
+        fadeEffect: {
+            crossFade: true
+        },
+        // 分頁圓點
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        // 導航左右箭頭
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    // --- 智慧懸浮 LOGO 功能 ---
     const fixedIcon = document.getElementById('fixed-icon');
 
     // 監聽頁面滾動事件
