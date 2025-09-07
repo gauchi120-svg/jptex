@@ -121,7 +121,7 @@ body {
 }
 
 #fixed-icon:hover img {
-    transform: scale(1.08) rotate(-10deg); /* 滑鼠移上去時，圖片稍微放大並旋轉 */
+    transform: scale(1.08) rotate(-10deg);
 }
 
 /* 當 LOGO 可見時的樣式 (由 JS 添加 .visible) */
@@ -142,6 +142,11 @@ body {
         top: 20px;
         left: 20px;
         bottom: auto;
+
+        /* 【本次修改】直接覆寫隱藏樣式，讓圖示在電腦上預設可見 */
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
     }
 
     #fixed-icon img {
