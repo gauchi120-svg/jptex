@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const swiper = new Swiper('.swiper', {
         loop: true, 
         autoplay: {
-            delay: 3000, // 【修正#5】輪播時間從 5 秒改為 3 秒
+            delay: 3000, 
             disableOnInteraction: false, 
         },
         pagination: {
