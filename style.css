@@ -98,7 +98,7 @@ body {
     cursor: pointer;
     
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-    /* 【修改】預設狀態改為可見 */
+    /* 【修改#1】預設狀態改為永遠可見 */
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
@@ -121,7 +121,6 @@ body {
     transform: scale(1.08) rotate(-10deg);
 }
 
-/* 這個 class 現在已不再被 JS 使用，但保留也無妨 */
 #fixed-icon.visible {
     opacity: 1;
     transform: translateY(0);
@@ -166,4 +165,10 @@ body {
 
 .swiper-pagination-bullet-active {
     background: #0d6efd; /* 使用網站主題藍色 */
+}
+
+/* --- 【新增#2】手機版導覽點擊後的閃爍效果 --- */
+.flash-bg {
+    background-color: #fffbe5; /* 淡黃色 */
+    transition: background-color 1s ease-out;
 }
