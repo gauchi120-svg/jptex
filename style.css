@@ -88,9 +88,7 @@ body {
     white-space: nowrap;
 }
 
-/* --- 智慧懸浮 LOGO 樣式 --- */
-
-/* 預設樣式 (手機版): 固定在左下角，預設隱藏 */
+/* --- 手機版懸浮 LOGO 樣式 --- */
 #fixed-icon {
     position: fixed;
     z-index: 1000;
@@ -128,25 +126,10 @@ body {
     visibility: visible;
 }
 
-/* 電腦版樣式 (寬度大於 768px) */
-@media (min-width: 768px) {
-    #fixed-icon {
-        width: 85px;
-        height: 85px;
-        top: 20px;
-        left: 20px;
-        bottom: auto;
-        opacity: 1;
-        transform: translateY(0);
-        visibility: visible;
-    }
+/* 【修改】移除電腦版懸浮 LOGO 的樣式 */
 
-    #fixed-icon img {
-        padding: 12px;
-    }
-}
 
-/* --- 【再次優化】提升電腦版基礎字體大小，增加閱讀性 --- */
+/* --- 提升電腦版基礎字體大小，增加閱讀性 --- */
 @media (min-width: 1024px) {
     html {
         font-size: 112.5%; /* 將基礎字體從 16px 提升至 18px */
