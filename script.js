@@ -1,25 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-    // --- 【修改後】初始化 Hero 輪播 ---
+    // --- 初始化 Hero 輪播 ---
     const swiper = new Swiper('.swiper', {
         loop: true, 
         autoplay: {
             delay: 5000, 
             disableOnInteraction: false, 
         },
-        // 分頁圓點
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
         },
-        // 導航左右箭頭
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
     });
 
-    /* --- 【修改】智慧懸浮 LOGO 功能的程式碼已移除 --- */
+    /* --- 【修改#1】智慧懸浮 LOGO 功能的程式碼已移除，改由 CSS 控制 --- */
     
     // --- 漢堡選單功能 ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -30,9 +28,26 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenu.classList.toggle('hidden');
     });
 
+    // 【修改#2 & #3】整合手機版選單連結的點擊功能
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
+            // 1. 關閉選單
             mobileMenu.classList.add('hidden');
+
+            // 2. 立即手動設定當前點擊項目的 active 狀態
+            mobileNavLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            // 3. 觸發目標區塊的閃爍效果
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.classList.add('flash-bg');
+                // 1.5秒後移除閃爍效果的 class
+                setTimeout(() => {
+                    targetSection.classList.remove('flash-bg');
+                }, 1500);
+            }
         });
     });
 
@@ -56,7 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         link.classList.add('active');
                     }
                 });
-                 mobileNavLinks.forEach(link => {
+                // 手機版的 active 狀態主要由滾動監聽來更新
+                mobileNavLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${id}`) {
                         link.classList.add('active');
