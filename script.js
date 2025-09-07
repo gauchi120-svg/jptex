@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const swiper = new Swiper('.swiper', {
         loop: true, 
         autoplay: {
-            delay: 3000,
+            delay: 3000, 
             disableOnInteraction: false, 
         },
         pagination: {
@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     });
 
-    /* --- 懸浮 LOGO 功能的程式碼已移除，由 CSS 控制 --- */
-    
     // --- 漢堡選單功能 ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -28,34 +26,17 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // 【修正】解決點擊與滾動監聽的衝突
-    let isClickScrolling = false; // 新增一個標記，來判斷是否為點擊觸發的滾動
-
+    // 【最終修正】簡化點擊邏輯，閃爍效果交給 CSS 處理
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            isClickScrolling = true; // 點擊時，立刻設定標記為 true
-
             // 1. 關閉選單
             mobileMenu.classList.add('hidden');
 
             // 2. 立即手動設定當前點擊項目的 active 狀態
             mobileNavLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
-
-            // 3. 觸發目標區塊的閃爍效果
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                targetSection.classList.add('flash-bg');
-                setTimeout(() => {
-                    targetSection.classList.remove('flash-bg');
-                }, 1500);
-            }
-
-            // 4. 設定一個計時器，在平滑滾動結束後，將標記改回 false
-            setTimeout(() => {
-                isClickScrolling = false;
-            }, 1000); // 1秒後恢復正常滾動監聽 (1000毫秒)
+            
+            // 閃爍效果的 JS 已移除，完全由 CSS 的 :target 偽類接管
         });
     });
 
@@ -70,11 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
-        // 【修正】在更新狀態前，先檢查是否為點擊觸發的滾動
-        if (isClickScrolling) {
-            return; // 如果是點擊滾動，則暫停本次的監聽，避免衝突
-        }
-
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
