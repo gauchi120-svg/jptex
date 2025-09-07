@@ -7,11 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
             delay: 5000, 
             disableOnInteraction: false, 
         },
-        /* * 【關鍵修改】
-         * 移除了 effect: 'fade' 相關設定，
-         * 恢復預設的 'slide' 滑動效果，確保手機版可以正常滑動。
-         */
-
         // 分頁圓點
         pagination: {
             el: '.swiper-pagination',
@@ -24,17 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     });
 
-    // --- 智慧懸浮 LOGO 功能 ---
-    const fixedIcon = document.getElementById('fixed-icon');
-
-    // 監聽頁面滾動事件
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 200) {
-            fixedIcon.classList.add('visible');
-        } else {
-            fixedIcon.classList.remove('visible');
-        }
-    });
+    /* --- 【修改】智慧懸浮 LOGO 功能的程式碼已移除 --- */
     
     // --- 漢堡選單功能 ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
