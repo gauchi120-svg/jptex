@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
     
+    // --- 【新增】智慧懸浮 LOGO 功能 ---
+    const fixedIcon = document.getElementById('fixed-icon');
+
+    // 監聽頁面滾動事件
+    window.addEventListener('scroll', function() {
+        // 如果頁面向下滾動超過 200px，就添加 .visible class，否則移除
+        if (window.scrollY > 200) {
+            fixedIcon.classList.add('visible');
+        } else {
+            fixedIcon.classList.remove('visible');
+        }
+    });
+    
     // --- 漢堡選單功能 ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
