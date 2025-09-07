@@ -98,7 +98,6 @@ body {
     cursor: pointer;
     
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-    /* 【修正#1】預設狀態改為永遠可見 */
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
@@ -167,8 +166,12 @@ body {
     background: #0d6efd; /* 使用網站主題藍色 */
 }
 
-/* --- 【修正#2】手機版導覽點擊後的閃爍效果 --- */
-.flash-bg {
-    background-color: #fffbe5; /* 淡黃色 */
-    transition: background-color 1s ease-out;
+/* --- 【最終修正】改用 CSS 動畫實現閃爍效果 --- */
+@keyframes yellow-flash {
+  from { background-color: #fffbe5; }
+  to { background-color: transparent; }
+}
+
+section:target {
+  animation: yellow-flash 1.5s ease-out;
 }
