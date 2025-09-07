@@ -21,24 +21,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
-    const desktopNavLinks = document.querySelectorAll('#desktop-menu .nav-link'); // 選取電腦版連結
+    const desktopNavLinks = document.querySelectorAll('#desktop-menu .nav-link');
 
     mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // 【全新邏輯】為手機版選單連結新增點擊事件
+    // 【最終修正】為手機版選單連結新增純粹的點擊事件
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden'); // 關閉選單
-            // 將所有連結的 active 狀態移除
+            mobileMenu.classList.add('hidden');
             mobileNavLinks.forEach(l => l.classList.remove('active'));
-            // 只為當前點擊的連結加上 active 狀態
             link.classList.add('active');
         });
     });
     
-    // 【全新邏輯】為電腦版選單連結也新增同樣的點擊事件，確保行為一致
+    // 【最終修正】為電腦版選單連結也新增同樣的點擊事件
     desktopNavLinks.forEach(link => {
         link.addEventListener('click', () => {
             desktopNavLinks.forEach(l => l.classList.remove('active'));
@@ -46,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /* --- 【全新邏輯】滾動監聽 (IntersectionObserver) 功能已完全移除 --- */
+    /* --- 所有滾動監聽 (IntersectionObserver) 功能已完全移除 --- */
 
     // --- 方案比較頁籤切換 ---
     const tabs = document.querySelectorAll('.tab');
