@@ -21,66 +21,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+    const desktopNavLinks = document.querySelectorAll('#desktop-menu .nav-link'); // 選取電腦版連結
 
     mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
 
-    let isClickScrolling = false; 
-
+    // 【全新邏輯】為手機版選單連結新增點擊事件
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            isClickScrolling = true; 
-
-            mobileMenu.classList.add('hidden');
-
+            mobileMenu.classList.add('hidden'); // 關閉選單
+            // 將所有連結的 active 狀態移除
             mobileNavLinks.forEach(l => l.classList.remove('active'));
+            // 只為當前點擊的連結加上 active 狀態
             link.classList.add('active');
-            
-            setTimeout(() => {
-                isClickScrolling = false;
-            }, 1000); 
         });
     });
-
-    // --- 滾動監聽，自動更新導覽列狀態 ---
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
     
-    // 【最終修正】調整滾動監聽的判斷標準
-    const observerOptions = {
-        root: null,
-        rootMargin: '-80px 0px 0px 0px', // 從頂部內縮80px開始計算，避開導覽列
-        threshold: 0.2 // 將觸發門檻從 0.4 降至 0.2，反應更靈敏
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        if (isClickScrolling) {
-            return; 
-        }
-
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
-                });
-                mobileNavLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
+    // 【全新邏輯】為電腦版選單連結也新增同樣的點擊事件，確保行為一致
+    desktopNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            desktopNavLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
         });
-    }, observerOptions);
-
-    sections.forEach(section => {
-        observer.observe(section);
     });
+
+    /* --- 【全新邏輯】滾動監聽 (IntersectionObserver) 功能已完全移除 --- */
 
     // --- 方案比較頁籤切換 ---
     const tabs = document.querySelectorAll('.tab');
