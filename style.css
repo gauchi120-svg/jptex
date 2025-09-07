@@ -89,43 +89,58 @@ body {
     white-space: nowrap;
 }
 
-/* --- 固定在左上角的圖示樣式 (已優化電腦版) --- */
+
+/* --- 【二次優化】固定 LOGO 的響應式設計 --- */
+
+/* 1. 手機版樣式 (預設樣式，小於 768px) */
 #fixed-icon {
     position: fixed;
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-    /* [二次修改] 電腦版再次放大圖示，並調整邊距 */
-    width: 75px;
-    height: 75px;
-    top: 10px;
-    left: 20px;
-}
-
-#fixed-icon:hover {
-    transform: scale(1.1); /* 滑鼠移上去時，稍微放大 */
+    transition: all 0.3s ease; /* 讓所有變化都平順 */
+    
+    /* [修改] 尺寸放大，位置改至左下角 */
+    width: 55px;
+    height: 55px;
+    bottom: 15px; /* 定位在底部 */
+    left: 15px;   /* 定位在左側 */
+    top: auto;      /* 清除頂部定位 */
 }
 
 #fixed-icon img {
-    width: 100%;       /* 讓圖片填滿整個圓圈 */
+    width: 100%;
     height: auto;
-    padding: 10px;      /* 讓圖片跟圓圈邊緣有點距離，不會擠在一起 */
+    padding: 7px;
 }
 
-/* --- [二次修改] LOGO 的手機版響應式設計 --- */
-@media (max-width: 767px) {
+#fixed-icon:hover {
+    transform: scale(1.1);
+}
+
+
+/* 2. 平板與中等螢幕樣式 (大於 768px) */
+@media (min-width: 768px) {
     #fixed-icon {
-        /* 手機版放大圖示 */
-        width: 55px;
-        height: 55px;
-        /* 將圖示從頂部下移 80px，使其顯示在導覽列下方 */
-        top: 80px;
-        left: 15px;
+        /* [修改] 恢復至左上角，並設定中等尺寸 */
+        width: 70px;
+        height: 70px;
+        top: 20px;
+        left: 20px;
+        bottom: auto; /* 清除底部定位 */
     }
 
     #fixed-icon img {
-        padding: 7px; /* 在手機上，微調圖片內距 */
+        padding: 8px;
+    }
+}
+
+/* 3. 大螢幕樣式 (大於 1024px) */
+@media (min-width: 1024px) {
+    #fixed-icon {
+        /* [修改] 在大螢幕上使用更大的尺寸 */
+        width: 80px;
+        height: 80px;
     }
 }
