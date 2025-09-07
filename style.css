@@ -67,12 +67,13 @@ body {
 /* --- 最受歡迎方案樣式 --- */
 .plan-popular {
     position: relative;
-    border-color: #0d6efd;
-    transform: scale(1.03);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border-color: #0d6efd; /* 使用主題藍色作為邊框 */
+    transform: scale(1.03); /* 稍微放大，使其突出 */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* 增加陰影 */
     z-index: 10;
 }
 
+/* --- 為最受歡迎方案加上一個小標籤 --- */
 .plan-popular::before {
     content: '最多人選擇';
     position: absolute;
@@ -81,75 +82,50 @@ body {
     transform: translateX(-50%);
     background-color: #0d6efd;
     color: white;
-    font-size: 0.75rem;
+    font-size: 0.75rem; /* 12px */
     font-weight: bold;
     padding: 4px 12px;
     border-radius: 9999px;
     white-space: nowrap;
 }
 
-/* --- 【最終優化】智慧懸浮 LOGO 樣式 --- */
-
-/* 預設樣式 (手機版): 固定在左下角，預設隱藏 */
+/* --- 固定在左上角的圖示樣式 (已優化電腦版) --- */
 #fixed-icon {
     position: fixed;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    
-    /* 動態效果 */
-    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-    opacity: 0;
-    transform: translateY(20px);
-    visibility: hidden;
-
-    /* 手機版尺寸與位置 */
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    /* [二次修改] 電腦版再次放大圖示，並調整邊距 */
+    width: 75px;
+    height: 75px;
+    top: 10px;
     left: 20px;
-    top: auto;
+}
+
+#fixed-icon:hover {
+    transform: scale(1.1); /* 滑鼠移上去時，稍微放大 */
 }
 
 #fixed-icon img {
-    width: 100%;
+    width: 100%;       /* 讓圖片填滿整個圓圈 */
     height: auto;
-    padding: 8px;
-    transition: transform 0.3s ease;
+    padding: 10px;      /* 讓圖片跟圓圈邊緣有點距離，不會擠在一起 */
 }
 
-#fixed-icon:hover img {
-    transform: scale(1.08) rotate(-10deg);
-}
-
-/* 當 LOGO 可見時的樣式 (由 JS 添加 .visible) */
-#fixed-icon.visible {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-}
-
-/* 電腦版樣式 (寬度大於 768px) */
-@media (min-width: 768px) {
+/* --- [二次修改] LOGO 的手機版響應式設計 --- */
+@media (max-width: 767px) {
     #fixed-icon {
-        /* 尺寸放大 */
-        width: 85px;
-        height: 85px;
-        
-        /* 位置恢復至左上角 */
-        top: 20px;
-        left: 20px;
-        bottom: auto;
-
-        /* 【本次修改】直接覆寫隱藏樣式，讓圖示在電腦上預設可見 */
-        opacity: 1;
-        transform: translateY(0);
-        visibility: visible;
+        /* 手機版放大圖示 */
+        width: 55px;
+        height: 55px;
+        /* 將圖示從頂部下移 80px，使其顯示在導覽列下方 */
+        top: 80px;
+        left: 15px;
     }
 
     #fixed-icon img {
-        padding: 12px;
+        padding: 7px; /* 在手機上，微調圖片內距 */
     }
 }
