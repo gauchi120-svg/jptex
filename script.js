@@ -22,20 +22,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
     const desktopNavLinks = document.querySelectorAll('#desktop-menu .nav-link');
-    
-    // 【修正】選取手機選單中的「立即預約」按鈕
-    const mobileBookNowButton = document.getElementById('mobile-book-now-button');
 
     mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // 為手機版選單連結新增純粹的點擊事件
+    // 為手機版選單連結新增點擊事件
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
             mobileNavLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
+
+            // 【修正】重新加入閃爍效果的邏輯
+            const targetId = link.getAttribute('href');
+            // 只對頁內錨點連結 (#) 作用，忽略 FAQ.html 這類外部連結
+            if (targetId && targetId.startsWith('#')) {
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    // 新增閃爍 class
+                    targetSection.classList.add('flash-bg');
+                    // 1.5秒後移除，讓效果消失
+                    setTimeout(() => {
+                        targetSection.classList.remove('flash-bg');
+                    }, 1500);
+                }
+            }
         });
     });
     
@@ -44,15 +56,20 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', () => {
             desktopNavLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
+
+            // 【修正】為電腦版也加入閃爍效果的邏輯
+            const targetId = link.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('flash-bg');
+                    setTimeout(() => {
+                        targetSection.classList.remove('flash-bg');
+                    }, 1500);
+                }
+            }
         });
     });
-
-    // 【修正】為手機選單的「立即預約」按鈕新增點擊後收合選單的功能
-    if (mobileBookNowButton) {
-        mobileBookNowButton.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
-    }
 
     /* --- 所有滾動監聽 (IntersectionObserver) 功能已完全移除 --- */
 
