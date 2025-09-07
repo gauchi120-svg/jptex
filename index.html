@@ -7,6 +7,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -75,9 +76,27 @@
                         🚀 立即預約，鎖定優惠
                     </a>
                 </div>
-                <div class="mt-8 max-w-4xl mx-auto bg-slate-200 rounded-lg overflow-hidden shadow-xl aspect-video">
-                    <img src="images/sun_screen_construction.jpg" alt="技師仔細在玻璃上塗抹GUARD PRO隔熱鍍膜" class="w-full h-full object-cover">
+                
+                <div class="mt-8 max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl aspect-video relative swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="images/sun_screen_construction.jpg" alt="技師仔細在玻璃上塗抹GUARD PRO隔熱鍍膜" class="w-full h-full object-cover">
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-black bg-opacity-50 text-white text-center">
+                                <p class="font-semibold">專業技師到府施工</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/temperature_test.jpg" alt="鍍膜前後溫度差異實測，明顯降溫" class="w-full h-full object-cover">
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-black bg-opacity-50 text-white text-center">
+                                <p class="font-semibold">實驗證實，有效降溫 5°C 以上</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
+
             </div>
         </section>
 
@@ -283,19 +302,20 @@
     </main>
 
     <footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto px-6 text-center text-sm">
-        <div class="flex justify-center space-x-6 mb-4">
-            <a href="brand-story.html" class="hover:text-blue-400 transition-colors">品牌故事</a>
-            <a href="crowdfunding-plan.html" class="hover:text-blue-400 transition-colors">募資計畫</a>
-            <a href="#plans" class="hover:text-blue-400 transition-colors">方案介紹</a>
+        <div class="container mx-auto px-6 text-center text-sm">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="brand-story.html" class="hover:text-blue-400 transition-colors">品牌故事</a>
+                <a href="crowdfunding-plan.html" class="hover:text-blue-400 transition-colors">募資計畫</a>
+                <a href="#plans" class="hover:text-blue-400 transition-colors">方案介紹</a>
+            </div>
+
+            <p>&copy; 2025 樂優生活科技團隊</p>
+            <p class="mt-2">聯繫方式：service@guardpro.com</p>
+            <p class="mt-2">此為募資專案，資金將用於產品研發與推廣，預計2025年正式上市。</p>
         </div>
+    </footer>
 
-        <p>&copy; 2025 樂優生活科技團隊</p>
-        <p class="mt-2">聯繫方式：service@guardpro.com</p>
-        <p class="mt-2">此為募資專案，資金將用於產品研發與推廣，預計2025年正式上市。</p>
-    </div>
-</footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
