@@ -14,18 +14,31 @@
         body {
             font-family: 'Noto Sans TC', sans-serif;
         }
+        /* 內容區塊的動畫效果 */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        /* 圖示旋轉動畫 */
+        .category-toggle-icon {
+            transition: transform 0.3s ease-out;
+        }
+        .category-header.active .category-toggle-icon {
+            transform: rotate(180deg);
+        }
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            transition: max-height 0.5s ease-out; /* 動畫時間設定為 0.5s */
             padding-top: 0;
             padding-bottom: 0;
         }
         .faq-question.active + .faq-answer {
-            max-height: 500px; /* 設定一個足夠大的高度 */
-            transition: max-height 0.5s ease-in, padding 0.5s ease-in;
-            padding-top: 1rem; /* 16px */
-            padding-bottom: 1.5rem; /* 24px */
+            max-height: 1000px; /* 增加高度以容納較長內容 */
+            transition: max-height 0.5s ease-in;
+            padding-top: 1rem;
+            padding-bottom: 1.5rem;
         }
         .icon-plus {
             transition: transform 0.3s ease-out;
@@ -43,7 +56,7 @@
                 <img src="images/logo.png" alt="Guard Pro Logo" class="h-12 md:h-16 w-auto">
                 <div class="text-xl font-bold text-blue-600">樂優生活 · GUARD PRO</div>
             </a>
-            <a href="index.html#plans" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
+            <a href="index.html" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm hover:bg-blue-700 transition-colors duration-300">
                 返回首頁
             </a>
         </nav>
@@ -52,92 +65,184 @@
     <main class="container mx-auto px-6 py-12 md:py-20">
         <h1 class="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-800">常見問題 (FAQ)</h1>
         <p class="text-center max-w-2xl mx-auto text-gray-600 mb-12">
-            我們整理了一些最常見的問題，希望能為您解惑。
+            我們將問題分為「產品說明書」與「深度選購指南」，幫助您快速找到解答。
         </p>
 
-        <div class="max-w-3xl mx-auto space-y-4">
-            
-            <div class="border rounded-lg bg-white shadow-sm overflow-hidden">
-                <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                    <span class="font-semibold text-lg">Q1：「隔熱鍍膜」真的有效嗎？原理是什麼？</span>
-                    <svg class="icon-plus w-6 h-6 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+        <div class="max-w-3xl mx-auto space-y-6">
+
+            <!-- 分類一：產品說明書 -->
+            <div class="border rounded-lg bg-white shadow-md overflow-hidden">
+                <button class="category-header w-full flex justify-between items-center text-left p-5 bg-gray-100 hover:bg-gray-200 transition-colors focus:outline-none">
+                    <div>
+                        <h2 class="font-bold text-xl text-blue-700">產品說明書 (Q1-Q8)</h2>
+                        <p class="text-sm text-gray-600 mt-1">關於產品規格、施工流程等基本資訊</p>
+                    </div>
+                    <svg class="category-toggle-icon w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="faq-answer px-5 text-gray-700 leading-relaxed">
-                    <p>絕對有效。GUARD PRO 的核心技術是一種奈米級的液態金屬氧化物，塗抹在玻璃上會形成一道僅有數微米厚的隱形薄膜。這層薄膜能精準地阻擋造成熱感的紅外線 (約88%)與造成家具褪色、皮膚曬傷的紫外線 (99%)，但同時允許大部分的可見光 (85%)穿透。因此，它能在不影響採光的前提下，達到顯著的隔熱降溫效果，在西曬環境下，體感溫度約可下降 4-6°C。</p>
+                <div class="faq-content">
+                    <div class="p-5 space-y-4 border-t">
+                        <!-- Q1 -->
+                        <div class="border-b pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q1：「隔熱鍍膜」真的有效嗎？原理是什麼？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                                <p>絕對有效。GUARD PRO 的核心技術是一種奈米級的液態金屬氧化物，塗抹在玻璃上會形成一道僅有數微米厚的隱形薄膜。這層薄膜能精準地阻擋造成熱感的紅外線 (約88%)與造成家具褪色、皮膚曬傷的紫外線 (99%)，但同時允許大部分的可見光 (85%)穿透。因此，它能在不影響採光的前提下，達到顯著的隔熱降溫效果，在西曬環境下，體感溫度約可下降 4-6°C。</p>
+                            </div>
+                        </div>
+                        <!-- Q2 -->
+                        <div class="border-b pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q2：跟市面上常見的隔熱紙有什麼不同？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                                <p>最大的不同在於它是「液態塗層」技術。傳統隔熱紙是用「黏膠貼合」（對！您沒看錯，所以黏貼技術也必須高明），時間久了會因日曬高溫而脆化、變質，導致起泡、脫落，清除殘膠也非常麻煩。Guard pro 採用獨家專利技術，直接在玻璃上形成一層均勻、高透光的奈米隔熱層，不僅隔熱效果更持久穩定，還能保有最清晰的視野，不會像某些隔熱紙有網點或白霧感。</p>
+                            </div>
+                        </div>
+                        <!-- Q3 -->
+                        <div class="border-b pb-4">
+                             <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q3：我的窗戶是特殊尺寸或弧形的，可以施工嗎？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                               <p>完全沒問題。這正是 Guard pro 液態塗層的一大優勢。無論您的玻璃是落地窗、弧形窗、天窗或任何不規則形狀，我們的專業技師都能完美均勻地施工，不會有傳統貼膜因尺寸或形狀限制而產生接縫或裁切不平整的問題。</p>
+                            </div>
+                        </div>
+                        <!-- Q4 -->
+                        <div class="border-b pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q4：施工後玻璃會變暗或變色嗎？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                               <p>完全不會。由於鍍膜層極度輕薄且光學等級高，施工後玻璃幾乎完全透明，維持原有的通透感與窗外景色，不會像貼了深色隔熱紙一樣讓室內變得昏暗。從室外看，也幾乎無法察覺有施工過，能完美維持大樓或住宅的原有外觀。</p>
+                            </div>
+                        </div>
+                         <!-- Q5 -->
+                        <div class="border-b pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q5：隔熱效果可以維持多久？有提供保固嗎？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                               <p>我們的核心原料能與玻璃表面形成分子級的緊密結合，物理性質非常耐久，施工塗佈後可用10年。我們對您的承諾，建立在「耐久的原料」與「專業的施工」兩大基礎上，因此提供為期 1 年的施工品質保固，確保它在第一年最關鍵期，發揮最佳效能、完美附著。</p>
+                            </div>
+                        </div>
+                        <!-- Q6 -->
+                        <div class="border-b pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q6：施工會不會很麻煩？需要花很長的時間嗎？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                               <p>請完全放心。我們的專業團隊訂有嚴格的標準施工作業流程（SOP），目的就是高效、整潔、專業：平均施工約二小時，不干擾您日常作息；事前會對您的窗框周邊、地板與傢俱做完整保護，確保環境整潔。</p>
+                            </div>
+                        </div>
+                        <!-- Q7 -->
+                        <div class="border-b pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q7：除了隔熱，Guard pro 還有其他好處嗎？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                               <p>當然有。除了卓越的隔熱性能，還能有效阻擋超過 99% 的紫外線 (UV)，保護您的皮膚、眼睛以及昂貴的傢俱、地板，避免因日曬而褪色老化。同時高透光的特性讓您依然能擁有明亮的室內採光，不必犧牲自然光線。</p>
+                            </div>
+                        </div>
+                        <!-- Q8 -->
+                        <div class="pb-2">
+                             <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q8：為什麼要透過募資購買？可以自己 DIY 嗎？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                               <p>我們選擇透過群眾募資，是為了在產品正式上市前，以最優惠的價格回饋給第一批支持我們的使用者。至於 DIY，由於鍍膜需要專業技巧與工具，為確保最佳效果，我們不建議也未曾對外銷售 DIY 產品，而是堅持由受過專業訓練的技師施工。</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="border rounded-lg bg-white shadow-sm overflow-hidden">
-                <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                    <span class="font-semibold text-lg">Q2：Guard pro 跟市面上常見的隔熱紙有什麼不同？為什麼我該選擇 Guard pro？</span>
-                    <svg class="icon-plus w-6 h-6 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            <!-- 分類二：深度選購指南 -->
+            <div class="border rounded-lg bg-white shadow-md overflow-hidden">
+                <button class="category-header w-full flex justify-between items-center text-left p-5 bg-gray-100 hover:bg-gray-200 transition-colors focus:outline-none">
+                    <div>
+                        <h2 class="font-bold text-xl text-blue-700">深度選購指南 (Q9-Q14)</h2>
+                        <p class="text-sm text-gray-600 mt-1">關於CP值分析、產品比較等進階說明</p>
+                    </div>
+                     <svg class="category-toggle-icon w-6 h-6 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="faq-answer px-5 text-gray-700 leading-relaxed">
-                    <p>Guard pro 最大的不同在於它是「液態塗層」技術。傳統隔熱紙是用黏膠貼合，時間久了會因日曬高溫而脆化、變質，導致起泡、脫落，清除殘膠也非常麻煩；另外，施工一樣要有專門的人，才能發揮效能。Guard pro 採用獨家專利技術，直接在玻璃上形成一層均勻、高透光的奈米隔熱層，不僅隔熱效果更持久穩定，還能保有最清晰的視野，不會像某些隔熱紙有網點或白霧感。簡單來說，Guard pro 給您的是長效、美觀、視野無損的頂級隔熱體驗。</p>
-                </div>
-            </div>
-
-            <div class="border rounded-lg bg-white shadow-sm overflow-hidden">
-                <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                    <span class="font-semibold text-lg">Q3：我的窗戶是特殊尺寸或弧形的，Guard pro 可以施工塗佈嗎？</span>
-                    <svg class="icon-plus w-6 h-6 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                </button>
-                <div class="faq-answer px-5 text-gray-700 leading-relaxed">
-                    <p>完全沒問題。這正是 Guard pro 液態塗層的一大優勢。無論您的玻璃是落地窗、弧形窗、天窗或任何不規則形狀，我們的專業技師都能完美均勻地施工，不會有傳統貼膜因尺寸或形狀限制而產生接縫或裁切不平整的問題。任何玻璃表面，我們都能為您打造無縫的隔熱保護。</p>
-                </div>
-            </div>
-            
-            <div class="border rounded-lg bg-white shadow-sm overflow-hidden">
-                <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                    <span class="font-semibold text-lg">Q4：施工後玻璃會變暗或變色嗎？會不會影響大樓外觀？</span>
-                    <svg class="icon-plus w-6 h-6 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                </button>
-                <div class="faq-answer px-5 text-gray-700 leading-relaxed">
-                    <p>完全不會。這是 GUARD PRO 與傳統隔熱紙最大的不同點。由於鍍膜層極度輕薄且光學等級高，施工後玻璃幾乎完全透明，維持原有的通透感與窗外景色，不會像貼了深色隔熱紙一樣讓室內變得昏暗。從室外看，也幾乎無法察覺有施工過，能完美維持大樓或住宅的原有外觀。</p>
-                </div>
-            </div>
-
-            <div class="border rounded-lg bg-white shadow-sm overflow-hidden">
-                <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                    <span class="font-semibold text-lg">Q5：Guard pro 的隔熱效果可以維持多久？有提供保固嗎？</span>
-                    <svg class="icon-plus w-6 h-6 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                </button>
-                <div class="faq-answer px-5 text-gray-700 leading-relaxed">
-                    <p>我們的核心原料，來自專業的奈米材料供應商。這類奈米級液態塗料的特性，是能與玻璃表面形成分子級的緊密結合，固化後形成一層隱形的防護層。基於這樣的材料科學原理，其物理性質本身就非常耐久，施工塗佈後可用10年。<br><br>我們對您的承諾，建立在「耐久的原料」與「專業的施工」兩大基礎上。因此，我們提供為期 1 年的施工品質保固。這代表我們有絕對的信心，能透過專業的施工技術，將這個耐久的好材料完美地應用在您家的玻璃上，確保它在第一年最關鍵的適應期中，發揮最佳效能、完美附著。</p>
-                </div>
-            </div>
-
-            <div class="border rounded-lg bg-white shadow-sm overflow-hidden">
-                <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                    <span class="font-semibold text-lg">Q6：施工會不會很麻煩？需要花很長的時間嗎？會不會弄髒我的家裡？</span>
-                    <svg class="icon-plus w-6 h-6 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                </button>
-                <div class="faq-answer px-5 text-gray-700 leading-relaxed">
-                    <p>請完全放心。Guard pro 的核心理念就是「無感升級、涼感省電」，我們對到府施工服務，訂有一套嚴格的標準施工作業流程（SOP)，目的就是高效、整潔、專業：<br>
-                    1. <strong>高效</strong>：平均施工約二小時，不干擾您日常作息。<br>
-                    2. <strong>整潔</strong>：事前會對您的窗框周邊、地板與傢俱做完整保護，確保環境整潔。<br>
-                    3. <strong>專業</strong>：Guard pro 的專業施工人員，都必須接受超過 100 小時的標準化流程培訓、熟練掌握我們獨家的塗佈技術、通過嚴格的內部實作考核，取得驗證資格。</p>
-                </div>
-            </div>
-
-            <div class="border rounded-lg bg-white shadow-sm overflow-hidden">
-                <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                    <span class="font-semibold text-lg">Q7：除了隔熱，Guard pro 還有其他好處嗎？</span>
-                    <svg class="icon-plus w-6 h-6 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                </button>
-                <div class="faq-answer px-5 text-gray-700 leading-relaxed">
-                    <p>當然有。Guard pro 除了卓越的隔熱性能，能為您節省冷氣電費外，還能有效阻擋超過 99% 的紫外線 (UV)，保護您的皮膚、眼睛以及昂貴的傢俱、地板，避免因日曬而褪色老化。此外，高透光的特性讓您在享受隔熱的同時，依然能擁有明亮的室內採光，不必犧牲自然光線。</p>
-                </div>
-            </div>
-
-            <div class="border rounded-lg bg-white shadow-sm overflow-hidden">
-                <button class="faq-question w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                    <span class="font-semibold text-lg">Q8：為什麼要透過募資購買？可以自己 DIY 嗎？</span>
-                    <svg class="icon-plus w-6 h-6 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                </button>
-                <div class="faq-answer px-5 text-gray-700 leading-relaxed">
-                    <p>我們選擇透過群眾募資平台，是為了在產品正式上市前，以最優惠的價格回饋給第一批支持我們的使用者。這筆資金將幫助我們擴大採購規模與優化服務流程。<br><br>
-                    至於 DIY，由於 GUARD PRO 鍍膜需要專業的塗佈技巧與工具，才能確保鍍膜層的均勻與最佳效果，因此我們不建議也未對外銷售 DIY產品。而是由受過專業訓練的技師施工，才能保證您獲得我們承諾的隔熱品質與產品壽命。</p>
+                 <div class="faq-content">
+                    <div class="p-5 space-y-4 border-t">
+                        <!-- Q9 -->
+                        <div class="border-b pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q9：跟市面上的DIY產品有什麼差別？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                                <p>這正是我們發起這個專案想解決的核心問題。我們的「GUARD PRO」是台灣首創的「產品＋專業到府施工」全包式解決方案。DIY隔熱塗料因專業施工門檻極高，消費者自行操作效果不彰。因此，我們募資用途的一部分，就是要用來建置全台專業施工團隊。您的支持，能幫助我們將嚴格的SOP標準化培訓落實到每一位師傅，確保您獲得的不是半成品，而是一個平均2小時快速完工、品質有保證的完整服務。</p>
+                            </div>
+                        </div>
+                        <!-- Q10 -->
+                        <div class="border-b pb-4">
+                             <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q10：為什麼要透過募資預購？價格真的有比較優惠嗎？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                                <p>絕對優惠。我們選擇在嘖嘖平台發起「預購式專案」，最大的目的就是「以量制價，將成本所節省之金額直接回饋給首批支持者」。傳統的產品上市，需要昂貴的通路與行銷費用，這些最終都會轉嫁到消費者身上。透過本次預購，您支付的費用，等於直接投入到「首批原料量產採購」與「施工團隊建置」。您等於是以最接近成本的「早鳥支持者」價格，享受到未來市售的頂尖技術與服務。</p>
+                            </div>
+                        </div>
+                        <!-- Q11 -->
+                        <div class="border-b pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q11：這次專案的鍍膜產品，其核心技術是什麼？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                                <p>我們專案的核心產品，採用的是「頂尖奈米級塗料」。這是一種奈米級的液態金屬氧化物，施工後，玻璃幾乎完全透明，能維持原有的通透感與窗外景色。這項技術的優點在於「高透光、低內反光」。由於其非金屬、非鏡面反射的原理，在夜晚室內開燈時，不會像許多傳統隔熱紙一樣產生惱人的室內倒影，讓您依然可以清晰地欣賞窗外的美麗夜景。</p>
+                            </div>
+                        </div>
+                         <!-- Q12 -->
+                        <div class="border-b pb-4">
+                             <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q12：預購的產品效果能持續多久？這項投資值得嗎？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                                <p>絕對值得。這項技術的耐久性遠超傳統貼膜，效果可長達10年。它並非用黏膠「貼」上去，而是能與玻璃表面形成「分子級的緊密結合」，固化後成為一層隱形的防護層。這代表您一次的支持，就能為家裡的「玻璃西曬」問題提供長達10年的解決方案。它能有效降低室內均溫4-6°C，並節省高達30%的冷氣電費。從長遠來看，這是一項高回報率的居家節能投資。</p>
+                            </div>
+                        </div>
+                        <!-- Q13 -->
+                        <div class="border-b pb-4">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q13：施工後，室內會不會變得很暗？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                               <p>請完全放心。如同我們創辦的初衷，我們拒絕在「明亮採光」與「舒適涼爽」之間妥協。GUARD PRO鍍膜擁有維持85%可見光穿透的高採光特性。<br><br><strong>【專案承諾與品質說明】</strong><br>作為一個即將上市的全新專案，我們承諾對支持者保持完全的透明。我們的服務是由受過嚴格SOP培訓的專業技師為您手工施作。我們相信，專業的技術，值得專業的對待。在特定光線角度下，近看可能仍會察覺微乎其微的工藝痕跡。我們相信，誠實溝通是贏得您信任的基礎。</p>
+                            </div>
+                        </div>
+                        <!-- Q14 -->
+                        <div class="pb-2">
+                            <button class="faq-question w-full flex justify-between items-center text-left focus:outline-none">
+                                <span class="font-semibold text-lg">Q14：和傳統的遮光窗簾比起來，有什麼優點？</span>
+                                <svg class="icon-plus w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="faq-answer px-1 text-gray-700 leading-relaxed">
+                               <p>在「家的涼爽大作戰」中，如果說遮光窗簾是犧牲光線的被動防守，那GUARD PRO就是兼顧採光的主動出擊，優勢體現在四季：</p>
+                               <ul class="list-disc list-inside mt-2 space-y-2">
+                                   <li><strong>贏得採光與視野：</strong>窗簾一拉，隔絕了熱，但也輸掉了陽光與窗外景色。GUARD PRO能在阻隔約88%紅外線熱能的同時，依然保有明亮採光。</li>
+                                   <li><strong>保護家具不褪色：</strong>能阻隔99%的紫外線，從根本上守護您心愛的裝潢與家具，避免其因日曬而失去光彩。</li>
+                                   <li><strong>告別塵蟎過敏原：</strong>我們的隔熱層與玻璃一體成形，沒有窗簾布料纖維容易積累灰塵、塵蟎的問題。</li>
+                                   <li><strong>四季皆宜的節能方案：</strong>到了冬天，它的特殊塗層能發揮所謂的「Low-E (低輻射)」功能，減緩室內暖氣向外流失，具備優異的「冬暖」效果。</li>
+                               </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -146,17 +251,66 @@
 
     <footer class="bg-gray-800 text-white py-8 mt-12 md:mt-20">
         <div class="container mx-auto px-6 text-center text-sm">
+             <div class="flex justify-center space-x-6 mb-4">
+                <a href="index.html" class="hover:text-blue-400 transition-colors">專案首頁</a>
+                <a href="brand-story.html" class="hover:text-blue-400 transition-colors">品牌故事</a>
+                <a href="crowdfunding-plan.html" class="hover:text-blue-400 transition-colors">募資計畫</a>
+            </div>
             <p>&copy; 2025 樂優生活科技團隊</p>
-             <p class="mt-2">聯絡方式：<a href="mailto:guardpro888@gmail.com" class="hover:text-blue-400 underline">guardpro888@gmail.com</a></p>
+            <p class="mt-2">聯絡方式：<a href="mailto:guardpro888@gmail.com" class="hover:text-blue-400 underline">guardpro888@gmail.com</a></p>
         </div>
     </footer>
 
     <script>
-        const faqQuestions = document.querySelectorAll('.faq-question');
+        document.addEventListener('DOMContentLoaded', function () {
+            // *** 修正後的核心邏輯 ***
 
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                question.classList.toggle('active');
+            // 函數：更新分類容器的高度
+            const updateCategoryHeight = (contentElement) => {
+                // 只有在分類容器是展開狀態時才更新高度
+                if (contentElement.style.maxHeight && contentElement.style.maxHeight !== '0px') {
+                    // 使用 setTimeout 等待內部元素的動畫完成 (500ms 應與 CSS transition 時間一致)
+                    setTimeout(() => {
+                        contentElement.style.maxHeight = contentElement.scrollHeight + "px";
+                    }, 500);
+                }
+            };
+
+            // 1. 分類標題的點擊事件
+            const categoryHeaders = document.querySelectorAll('.category-header');
+            categoryHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    header.classList.toggle('active');
+                    const content = header.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null; // 收合
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px"; // 展開
+                    }
+                });
+            });
+
+            // 2. 每個獨立問題的點擊事件
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', (event) => {
+                    event.stopPropagation(); // 防止事件向上冒泡，觸發分類標題的點擊事件
+
+                    const parentContent = question.closest('.faq-content');
+                    // 找到在同一個分類中，當前已經是 active 狀態的問題
+                    const currentlyActive = parentContent.querySelector('.faq-question.active');
+
+                    // 如果點擊的不是當前已展開的問題，則將已展開的那個關閉
+                    if (currentlyActive && currentlyActive !== question) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    
+                    // 切換被點擊問題的 active 狀態 (展開或收合)
+                    question.classList.toggle('active');
+
+                    // 呼叫函數，在動畫結束後重新計算並設定父層(分類)的正確高度
+                    updateCategoryHeight(parentContent);
+                });
             });
         });
     </script>
