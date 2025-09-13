@@ -20,22 +20,7 @@
         display: none!important;
       }
     </style>
-
-    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-    <style>
-    #webchat .bpWebchat {
-        position: unset;
-        width: 100%;
-        height: 100%;
-        max-height: 100%;
-        max-width: 100%;
-    }
-
-    #webchat .bpFab {
-        display: none;
-    }
-    </style>
-    </head>
+</head>
 <body class="bg-gray-50 text-gray-800">
     <a href="#" id="fixed-icon" title="回到最上方" class="md:hidden">
         <img src="images/logo.png" alt="Guard Pro Logo">
@@ -326,8 +311,6 @@
         </section>
     </main>
 
-    <div id="webchat" style="width: 100%; height: 600px; max-width: 500px; margin: 2rem auto;"></div>
-
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-6 text-center text-sm">
             <div class="flex justify-center space-x-6 mb-4">
@@ -344,48 +327,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/script.js?v=20250907"></script>
-    
-    <script>
-    window.botpress.on("webchat:ready", () => {
-        window.botpress.open();
-    });
-    window.botpress.init({
-        "botId": "a193eeeb-1b4e-4a1d-861e-72d47105e5eb",
-        "configuration": {
-        "version": "v2",
-        "composerPlaceholder": "請在此處輸入您的問題或輸入『客服』可以線上真人與您交談：",
-        "botName": "Guard Pro歡迎您來訪，您可輸入任何問題或輸入『客服』再點選一次連結，由真人客服回答。",
-        "botAvatar": "https://files.bpcontent.cloud/2025/09/10/14/20250910141713-5YSIRTJ7.png",
-        "fabImage": "https://files.bpcontent.cloud/2025/09/10/15/20250910155714-S5JYNXP2.png",
-        "website": {
-            "title": "https://jproyaltex.dpdns.org/",
-            "link": "https://jproyaltex.dpdns.org/"
-        },
-        "email": {
-            "title": "guardpro888@gmail.com",
-            "link": "guardpro888@gmail.com"
-        },
-        "phone": {
-            "title": "+886987927250",
-            "link": "+886987927250"
-        },
-        "termsOfService": {},
-        "privacyPolicy": {},
-        "color": "#3276EA",
-        "variant": "solid",
-        "headerVariant": "solid",
-        "themeMode": "light",
-        "fontFamily": "ADLaM Display",
-        "radius": 4,
-        "feedbackEnabled": false,
-        "footer": "[⚡ by Botpress](https://botpress.com/?from=webchat)",
-        "allowFileUpload": false
-        },
-        "clientId": "cf6e9e6c-978f-4dd5-ae72-680e77d13dcc",
-        "selector": "#webchat"
-    });
-        // 【除錯用】直接手動觸發聊天室開啟
-window.botpress.open();
-    </script>
-    </body>
+    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+    <script src="https://files.bpcontent.cloud/2025/09/09/17/20250909170423-O3H9GR6Z.js" defer></script>
+</body>
 </html>
