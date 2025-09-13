@@ -327,7 +327,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/script.js?v=20250907"></script>
-    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-    <script src="https://files.bpcontent.cloud/2025/09/09/17/20250909170423-O3H9GR6Z.js" defer></script>
+ <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+    <script>
+      window.addEventListener('load', function() {
+        window.botpressWebChat.init({
+          // --- 以下是從您 Botpress 後台取得的資訊 ---
+          "hostUrl": "https://botpress.cloud/v3.2",
+          "botId": "a193eeeb-1b4e-4a1d-861e-72d47105e5eb",
+          "clientId": "cf6e9e6c-978f-4dd5-ae72-680e77d13dcc",
+          
+          // --- 以下是機器人介面的設定 ---
+          "botName": "樂優生活小幫手",
+          "stylesheet": "https://files.bpcontent.cloud/2025/09/09/17/20250909170423-O3H9GR6Z.css", // 保留原本的樣式檔
+          "composerPlaceholder": "輸入您的問題...",
+          "avatarUrl": "images/logo.png", // 機器人頭像，使用您網站上的 Logo
+          
+          // --- ▼▼▼ 解決問題的關鍵設定 ▼▼▼ ---
+          "clearOnSend": true,
+        });
+      });
+    </script>
 </body>
 </html>
