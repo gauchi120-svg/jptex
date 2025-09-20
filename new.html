@@ -74,9 +74,9 @@
         }
       .screen-mesh {
             background-image:
-                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
-            background-size: 8px 8px;
+                linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px);
+            background-size: 5px 5px; /* 調整這裡使網格更密集 */
         }
       .effect-layer {
             transition: opacity 0.8s ease-in-out;
@@ -260,10 +260,47 @@
             </div>
         </section>
         
-        <section id="challenge" class="relative bg-slate-50">
-            <div class="md:grid md:grid-cols-3 md:gap-x-8 max-w-7xl mx-auto">
+        <section id="challenge" class="relative bg-slate-50 py-20">
+            <!-- 手機版：簡化版時間軸 -->
+            <div class="md:hidden container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-black text-slate-800 mb-4 leading-tight">眼見為憑：<br>紗窗的一年挑戰</h2>
+                    <p class="text-lg text-slate-600">我們將三種紗窗並列，揭開驚人的真相。</p>
+                </div>
+                
+                <div class="space-y-10">
+                    <!-- 時間點 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <p class="text-xl font-bold text-sky-600 mb-2">第 1 個月：蜜月期</p>
+                        <p class="text-base text-slate-600 leading-relaxed">剛裝上時，兩款防霾紗窗都比傳統紗窗更細緻、視野清晰。</p>
+                    </div>
+                    <!-- 時間點 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <p class="text-xl font-bold text-sky-600 mb-2">第 3 個月：梅雨季的考驗</p>
+                        <p class="text-base text-slate-600 leading-relaxed">一場大雨後，<span class="font-bold text-amber-700">無防潑水</span>紗窗現出原形，水膜覆蓋網孔，黏附了髒污，留下醜陋水漬。</p>
+                    </div>
+                    <!-- 時間點 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <p class="text-xl font-bold text-sky-600 mb-2">第 6 個月：比傳統更糟</p>
+                        <p class="text-base text-slate-600 leading-relaxed">潮濕加上空汙，讓無防潑水紗窗的髒污迅速累積，視野變得模糊不清，甚至比一般紗窗還髒。</p>
+                    </div>
+                    <!-- 時間點 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <p class="text-xl font-bold text-sky-600 mb-2">一年後：您還分得出來嗎？</p>
+                        <div class="h-40 my-4 rounded-md overflow-hidden grid grid-cols-3 gap-1">
+                             <div class="bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1494522855154-f2143435b373?q=80&w=400&auto=format&fit=crop&bri=-20&blur=2');"></div>
+                             <div class="bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1494522855154-f2143435b373?q=80&w=400&auto=format&fit=crop&bri=-40&blur=8');"></div>
+                             <div class="bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1494522855154-f2143435b373?q=80&w=400&auto=format&fit=crop');"></div>
+                        </div>
+                        <p class="text-base text-slate-600 leading-relaxed">無防潑水的防霾紗窗已失去價值，和傳統紗窗一樣骯髒。昂貴的投資，只買到一個麻煩。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 電腦版：滾動敘事 -->
+            <div class="hidden md:grid md:grid-cols-3 md:gap-x-8 max-w-7xl mx-auto">
                 <div class="md:col-span-2 md:order-2">
-                    <div class="sticky-visuals h-[50vh] md:h-screen shadow-2xl md:shadow-none rounded-b-3xl md:rounded-none overflow-hidden">
+                    <div class="sticky-visuals h-screen shadow-2xl overflow-hidden">
                         <div class="absolute inset-0 bg-cover bg-center transition-all duration-1000" id="background-view" style="background-image: url('https://images.unsplash.com/photo-1494522855154-f2143435b373?q=80&w=2070&auto=format&fit=crop');"></div>
                         <div class="grid grid-cols-3 h-full w-full relative">
                             <div class="relative border-r-2 border-white/20">
@@ -272,26 +309,26 @@
                                 <div class="absolute inset-0 effect-layer opacity-0" data-screen="traditional" data-step="2" style="background-color: rgba(0,0,0,0.1); background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAUCAYAAACw697mAAAAAXNSR0IArs4c6QAAADhJREFUKFNjZGBg+M/AwMDAwMiwAOKkQVYgTgNi9W+s4JpA3AzEHEDcCMRNAPk/1gBxM5BqAF0bAwMAbhmCbBl6Qz4AAAAASUVORK5CYII=');"></div>
                                 <div class="absolute inset-0 effect-layer opacity-0" data-screen="traditional" data-step="3" style="background-color: rgba(0,0,0,0.2); background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAUCAYAAACw697mAAAAAXNSR0IArs4c6QAAADhJREFUKFNjZGBg+M/AwMDAwMiwAOKkQVYgTgNi9W+s4JpA3AzEHEDcCMRNAPk/1gBxM5BqAF0bAwMAbhmCbBl6Qz4AAAAASUVORK5CYII=');"></div>
                                 <div class="absolute inset-0 effect-layer opacity-0" data-screen="traditional" data-step="4" style="background-color: rgba(0,0,0,0.35); background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAUCAYAAACw697mAAAAAXNSR0IArs4c6QAAADhJREFUKFNjZGBg+M/AwMDAwMiwAOKkQVYgTgNi9W+s4JpA3AzEHEDcCMRNAPk/1gBxM5BqAF0bAwMAbhmCbBl6Qz4AAAAASUVORK5CYII=');"></div>
-                                <div class="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs md:text-sm px-3 py-1 rounded-full whitespace-nowrap">一般傳統紗窗</div>
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white text-sm px-3 py-1 rounded-full whitespace-nowrap">一般傳統紗窗</div>
                             </div>
                             <div class="relative border-r-2 border-white/20">
                                 <div class="absolute inset-0 screen-mesh"></div>
                                  <div class="absolute inset-0 effect-layer opacity-0" data-screen="generic" data-step="2" style="background-color: rgba(210, 200, 180, 0.4); backdrop-filter: blur(4px);"></div>
                                  <div class="absolute inset-0 effect-layer opacity-0" data-screen="generic" data-step="3" style="background-color: rgba(180, 170, 150, 0.6); backdrop-filter: blur(8px);"></div>
                                  <div class="absolute inset-0 effect-layer opacity-0" data-screen="generic" data-step="4" style="background-color: rgba(150, 140, 120, 0.75); backdrop-filter: blur(10px);"></div>
-                                <div class="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs md:text-sm px-3 py-1 rounded-full whitespace-nowrap">他牌無防潑水</div>
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white text-sm px-3 py-1 rounded-full whitespace-nowrap">他牌無防潑水</div>
                             </div>
                             <div class="relative">
                                 <div class="absolute inset-0 screen-mesh"></div>
                                 <div class="absolute inset-0 effect-layer opacity-0" data-screen="guardpro" data-step="2" id="guardpro-water-effect"></div>
-                                <div class="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 bg-sky-600/80 text-white text-xs md:text-sm px-3 py-1 rounded-full whitespace-nowrap">Guard pro</div>
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-sky-600/80 text-white text-sm px-3 py-1 rounded-full whitespace-nowrap">Guard pro</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="md:col-span-1 md:order-1 z-10">
                     <div id="story-blocks" class="p-4 md:p-0">
-                        <div class="story-text-block h-[80vh] md:h-screen flex flex-col justify-center p-6 md:p-8">
+                        <div class="story-text-block flex flex-col justify-center p-8 min-h-[90vh]">
                             <h2 class="text-4xl md:text-5xl font-black text-slate-800 mb-4 leading-tight">眼見為憑：<br>紗窗的一年挑戰</h2>
                             <p class="text-lg text-slate-600">我們進行了一場為期一年的模擬挑戰，將三種紗窗並列，揭開驚人的真相。</p>
                             <div class="mt-12 text-center text-slate-500 scroll-indicator">
@@ -299,22 +336,22 @@
                                 <svg class="w-6 h-6 mx-auto mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                             </div>
                         </div>
-                        <div class="story-text-block h-screen flex flex-col justify-center p-6 md:p-8" data-step="1">
+                        <div class="story-text-block flex flex-col justify-center p-8 py-24 min-h-[65vh]" data-step="1">
                             <p class="text-xl font-bold text-sky-600 mb-2">第 1 個月：蜜月期</p>
                             <h3 class="text-3xl font-bold text-slate-800 mb-4">一切都很美好</h3>
                             <p class="text-base text-slate-600 leading-relaxed">剛裝上時，兩款防霾紗窗都比傳統紗窗更細緻，視野清晰。看起來，這是一次完美的升級。</p>
                         </div>
-                        <div class="story-text-block h-screen flex flex-col justify-center p-6 md:p-8" data-step="2">
+                        <div class="story-text-block flex flex-col justify-center p-8 py-24 min-h-[65vh]" data-step="2">
                             <p class="text-xl font-bold text-sky-600 mb-2">第 3 個月：梅雨季的考驗</p>
                             <h3 class="text-3xl font-bold text-slate-800 mb-4">真正的挑戰，來自一場雨</h3>
                             <p class="text-base text-slate-600 leading-relaxed">連續降雨，讓<span class="font-bold text-amber-700">無防潑水</span>的紗窗現出原形。水膜覆蓋了網孔，黏附了空氣中的髒污。雨停後，留下了無法清除的醜陋水漬。</p>
                         </div>
-                        <div class="story-text-block h-screen flex flex-col justify-center p-6 md:p-8" data-step="3">
+                        <div class="story-text-block flex flex-col justify-center p-8 py-24 min-h-[65vh]" data-step="3">
                             <p class="text-xl font-bold text-sky-600 mb-2">第 6 個月：夏日空汙</p>
                             <h3 class="text-3xl font-bold text-slate-800 mb-4">昂貴的紗窗，比傳統更糟</h3>
                             <p class="text-base text-slate-600 leading-relaxed">潮濕加上空汙，讓無防潑水紗窗的髒污迅速累積。網孔被堵塞，視野變得模糊不清。此刻，它甚至比最普通的一般紗窗還要髒。</p>
                         </div>
-                        <div class="story-text-block h-screen flex flex-col justify-center p-6 md:p-8" data-step="4">
+                        <div class="story-text-block flex flex-col justify-center p-8 py-24 min-h-[65vh]" data-step="4">
                             <p class="text-xl font-bold text-sky-600 mb-2">一年後：最終結果</p>
                             <h3 class="text-3xl font-bold text-slate-800 mb-4">您還分得出來嗎？</h3>
                             <p class="text-base text-slate-600 leading-relaxed">一年過去，無防潑水的防霾紗窗已失去價值。它和一般傳統紗窗一樣**骯髒、視野模糊、不通風**。這筆昂貴的投資，最終只買到一個更難清潔的麻煩。</p>
@@ -481,9 +518,9 @@
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-6 text-center text-sm">
             <div class="flex justify-center space-x-6 mb-4">
-                <a href="#problem" class="hover:text-blue-400 transition-colors">產品介紹</a>
+                <a href="brand-story.html" class="hover:text-blue-400 transition-colors">品牌故事</a>
+                <a href="crowdfunding-plan.html" class="hover:text-blue-400 transition-colors">募資計畫</a>
                 <a href="#plans" class="hover:text-blue-400 transition-colors">方案介紹</a>
-                <a href="#faq" class="hover:text-blue-400 transition-colors">常見問題</a>
             </div>
 
             <p>&copy; 2025 樂優生活科技團隊</p>
@@ -545,9 +582,9 @@
             });
         });
 
-        // --- 「一年挑戰」區塊的 JavaScript ---
-        const storyBlocks = document.querySelectorAll('.story-text-block');
-        if (storyBlocks.length > 0) {
+        // --- 「一年挑戰」區塊的 JavaScript (僅作用於電腦版) ---
+        const storyBlocks = document.querySelectorAll('#challenge .hidden.md\\:grid .story-text-block');
+        if (storyBlocks.length > 0 && window.innerWidth >= 768) {
             const background = document.getElementById('background-view');
             const effectLayers = document.querySelectorAll('.effect-layer');
             const guardProWaterEffectContainer = document.getElementById('guardpro-water-effect');
@@ -571,15 +608,13 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-active');
                     } else {
-                        if (entry.target.dataset.step) {
-                           entry.target.classList.remove('is-active');
-                        }
+                        entry.target.classList.remove('is-active');
                     }
                 });
-                // 更新視覺
+                
                 const activeBlocks = Array.from(storyBlocks).filter(b => b.classList.contains('is-active'));
-                const latestActiveBlock = activeBlocks.length > 0 ? activeBlocks[activeBlocks.length - 1] : storyBlocks[0];
-                const currentStep = latestActiveBlock.dataset.step || null;
+                const latestActiveBlock = activeBlocks[activeBlocks.length - 1];
+                const currentStep = latestActiveBlock ? latestActiveBlock.dataset.step : null;
                 updateVisuals(currentStep);
 
             }, { root: null, threshold: 0.5, rootMargin: '0px 0px -40% 0px' });
@@ -598,18 +633,32 @@
                     const layerStep = layer.dataset.step;
                     const layerScreen = layer.dataset.screen;
                     let shouldBeVisible = false;
-                    if (step) {
-                        if (parseInt(layerStep) <= parseInt(step)) {
-                           shouldBeVisible = true;
-                        }
+                    
+                    if (step && parseInt(layerStep) <= parseInt(step)) {
+                        shouldBeVisible = true;
                     }
+
                     if (layerScreen === 'guardpro' && layerStep !== step) {
                         shouldBeVisible = false;
                     }
+
+                    if (!step) {
+                       shouldBeVisible = false;
+                    }
+                     if (step === '1' && layerStep !=='1') {
+                        shouldBeVisible = false;
+                    }
+                     if (step === '1' && layerStep ==='1' && layerScreen === 'traditional') {
+                        shouldBeVisible = true;
+                    }
+                    
                     layer.style.opacity = shouldBeVisible ? '1' : '0';
                 });
             }
-            if(storyBlocks[0]) storyBlocks[0].classList.add('is-active');
+            if(storyBlocks[0]) {
+                storyBlocks[0].classList.add('is-active');
+                updateVisuals(null);
+            }
         }
     </script>
 </body>
