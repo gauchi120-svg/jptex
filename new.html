@@ -70,7 +70,8 @@
       .sticky-visuals {
             position: -webkit-sticky;
             position: sticky;
-            top: 0;
+            /* UPDATE: Adjusted top position to account for sticky header */
+            top: 80px; 
         }
       .screen-mesh {
             background-image:
@@ -174,8 +175,8 @@
                     </a>
                 </div>
                 
-                <!-- UPDATE: Swiper section updated with new content and layout -->
-                <div class="mt-8 max-w-5xl mx-auto rounded-lg overflow-hidden shadow-xl relative swiper">
+                <!-- UPDATE: Removed max-w-* and mx-auto to respect parent padding -->
+                <div class="mt-8 rounded-lg overflow-hidden shadow-xl relative swiper">
                     <div class="swiper-wrapper">
                         <!-- Slide 1: Flour Test -->
                         <div class="swiper-slide">
@@ -352,7 +353,8 @@
             <!-- 電腦版：滾動敘事 -->
             <div class="hidden md:grid md:grid-cols-3 md:gap-x-8 max-w-7xl mx-auto">
                 <div class="md:col-span-2 md:order-2">
-                    <div class="sticky-visuals h-screen shadow-2xl overflow-hidden">
+                    <!-- UPDATE: Removed h-screen and added inline style for calculated height -->
+                    <div class="sticky-visuals shadow-2xl overflow-hidden" style="height: calc(100vh - 80px);">
                         <div class="absolute inset-0 bg-cover bg-center transition-all duration-1000" id="background-view" style="background-image: url('https://images.unsplash.com/photo-1494522855154-f2143435b373?q=80&w=2070&auto=format&fit=crop');"></div>
                         <div class="grid grid-cols-3 h-full w-full relative">
                             <div class="relative border-r-2 border-white/20">
@@ -711,3 +713,4 @@
     </script>
 </body>
 </html>
+
