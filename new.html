@@ -19,8 +19,9 @@
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
       }
+      /* UPDATE: Changed swiper button color to blue */
       .swiper-button-next, .swiper-button-prev {
-          color: #ffffff;
+          color: #2563eb;
       }
       .swiper-pagination-bullet-active {
           background-color: #0d6efd;
@@ -70,7 +71,7 @@
       .sticky-visuals {
             position: -webkit-sticky;
             position: sticky;
-            /* UPDATE: Adjusted top position to account for sticky header */
+            /* UPDATE: Adjusted top position to account for sticky header's height */
             top: 80px; 
         }
       .screen-mesh {
@@ -175,7 +176,7 @@
                     </a>
                 </div>
                 
-                <!-- UPDATE: Removed max-w-* and mx-auto to respect parent padding -->
+                <!-- UPDATE: Removed max-width and mx-auto to fix mobile overflow -->
                 <div class="mt-8 rounded-lg overflow-hidden shadow-xl relative swiper">
                     <div class="swiper-wrapper">
                         <!-- Slide 1: Flour Test -->
@@ -353,7 +354,7 @@
             <!-- 電腦版：滾動敘事 -->
             <div class="hidden md:grid md:grid-cols-3 md:gap-x-8 max-w-7xl mx-auto">
                 <div class="md:col-span-2 md:order-2">
-                    <!-- UPDATE: Removed h-screen and added inline style for calculated height -->
+                    <!-- UPDATE: Set height using calc() to respect the sticky header -->
                     <div class="sticky-visuals shadow-2xl overflow-hidden" style="height: calc(100vh - 80px);">
                         <div class="absolute inset-0 bg-cover bg-center transition-all duration-1000" id="background-view" style="background-image: url('https://images.unsplash.com/photo-1494522855154-f2143435b373?q=80&w=2070&auto=format&fit=crop');"></div>
                         <div class="grid grid-cols-3 h-full w-full relative">
