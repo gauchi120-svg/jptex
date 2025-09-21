@@ -174,6 +174,33 @@
                 
                 <div class="mt-8 rounded-lg overflow-hidden shadow-xl relative swiper">
                     <div class="swiper-wrapper">
+                        <!-- Slide 1: PM2.5 Test -->
+                        <div class="swiper-slide">
+                            <div class="flex flex-col md:flex-row h-full bg-gray-50">
+                                <div class="md:w-1/2 md:h-full">
+                                    <img src="images/pm25_test.png" alt="PM2.5 煙霧實證" class="w-full h-auto md:h-full md:object-cover">
+                                </div>
+                                <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-center text-left">
+                                    <h3 class="text-xl md:text-2xl font-bold text-blue-600">【煙霧實證】終結PM2.5！看得見的安心防護</h3>
+                                    <div class="mt-4 space-y-3 text-gray-700">
+                                        <div>
+                                            <h4 class="font-semibold">1. 高效過濾力：煙霧=PM2.5，微小粒子輕鬆擋！</h4>
+                                            <p class="text-sm mt-1">我們用煙霧模擬空氣中最難防的PM2.5。實驗證明，傳統紗網形同虛設，而Guard Pro能將致命的懸浮微粒完美隔絕，守護全家人的呼吸健康。</p>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold">2. 靜電吸附力：髒污主動捕捉，空氣只留清新！</h4>
+                                            <p class="text-sm mt-1">紗網纖維帶有的長效靜電，會像磁鐵一樣主動吸附帶電的煙霧微粒，將其牢牢鎖在紗網外側，防止它們飄入室內造成二次污染。</p>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold">3. 權威認證：別再用肺過濾WHO認證的一級致癌物！</h4>
+                                            <p class="text-sm mt-1">空污不只是髒，更是健康的隱形殺手。面對權威認證的威脅，您需要的是真正有效的科學防護，而不是心理安慰。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Flour Test -->
                         <div class="swiper-slide">
                             <div class="flex flex-col md:flex-row h-full bg-gray-50">
                                 <div class="md:w-1/2 md:h-full">
@@ -199,6 +226,7 @@
                             </div>
                         </div>
 
+                        <!-- Slide 3: Original Water Repellent Slide -->
                         <div class="swiper-slide">
                             <img src="https://images.unsplash.com/photo-1517042582833-028a2c2da6c4?q=80&w=2070&auto=format&fit=crop" alt="雨水落在Guard Pro紗窗上形成水珠滑落的特寫" class="w-full h-full object-cover">
                             <div class="absolute bottom-0 left-0 w-full p-4 bg-black bg-opacity-50 text-white text-center">
@@ -206,12 +234,6 @@
                             </div>
                         </div>
 
-                        <div class="swiper-slide">
-                            <img src="https://images.unsplash.com/photo-1611604548018-d86be2d82197?q=80&w=2070&auto=format&fit=crop" alt="充滿灰塵的空氣流經Guard Pro紗窗後變乾淨的示意圖" class="w-full h-full object-cover">
-                            <div class="absolute bottom-0 left-0 w-full p-4 bg-black bg-opacity-50 text-white text-center">
-                                <p class="font-semibold">靜電吸附技術｜有效過濾PM2.5</p>
-                            </div>
-                        </div>
                     </div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
@@ -706,8 +728,6 @@
                     background.style.filter = 'brightness(1)';
                 }
                 effectLayers.forEach(layer => {
-                    // **FIX:** A layer is visible ONLY if its 'data-step' attribute matches the current 'step'.
-                    // This ensures effects are REPLACED, not stacked, fixing the blur issue.
                     const shouldBeVisible = (layer.dataset.step === step);
                     layer.style.opacity = shouldBeVisible ? '1' : '0';
                 });
